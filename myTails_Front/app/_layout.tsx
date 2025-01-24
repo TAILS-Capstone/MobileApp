@@ -30,10 +30,20 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
+      {/* Pages principales */}
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+
+      {/* Écrans de connexion */}
+      <Stack.Screen name="userLogin" options={{ title: 'User Login' }} />
+      <Stack.Screen name="adminLogin" options={{ title: 'Admin Login' }} />
+
+      {/* Écran pour les erreurs */}
+      <Stack.Screen name="+not-found" options={{ title: 'Page Not Found' }} />
+    </Stack>
+
+      {/* Configuration de la barre d'état */}
       <StatusBar style="auto" />
     </ThemeProvider>
   );
+  
 }

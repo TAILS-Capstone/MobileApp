@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
+import "expo-router/entry";
+
 
 export default function SplashScreen() {
   const router = useRouter();
-
   useEffect(() => {
     setTimeout(() => {
-      router.replace('/tabs'); // Naviguer vers les onglets après 3 secondes
+      router.replace('/userLogin'); // Redirect to the User Mode page
     }, 3000);
   }, []);
 
