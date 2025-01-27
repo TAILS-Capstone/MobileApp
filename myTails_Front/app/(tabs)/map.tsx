@@ -1,30 +1,42 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import Map from '../../components/Map';
 
 export default function MapScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Carte et Vidéo</Text>
-      <Text style={styles.text}>
-        Ici, vous pouvez afficher la carte et la vidéo en direct du drone.
-      </Text>
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Carte et Vidéo</Text>
+        <Map />
+        <Text style={styles.text}>
+          Ici, vous pouvez afficher la carte et la vidéo en direct du drone.
+        </Text>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#f5f5f5',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginVertical: 20,
+    color: '#000',
   },
   text: {
     fontSize: 16,
     textAlign: 'center',
+    color: '#333',
+    marginTop: 20,
+    paddingHorizontal: 20,
   },
 });
