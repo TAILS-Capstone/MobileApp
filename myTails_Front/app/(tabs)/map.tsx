@@ -6,11 +6,8 @@ export default function MapScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Text style={styles.title}>Carte et Vidéo</Text>
+        <Text style={styles.title}>Carte</Text>
         <Map />
-        <Text style={styles.text}>
-          Ici, vous pouvez afficher la carte et la vidéo en direct du drone.
-        </Text>
       </View>
     </SafeAreaView>
   );
