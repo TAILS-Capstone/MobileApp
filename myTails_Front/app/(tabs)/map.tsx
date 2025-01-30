@@ -16,7 +16,7 @@ export default function MapScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#1a1a3b', // Couleur principale de fond,
   },
   container: {
     flex: 1,

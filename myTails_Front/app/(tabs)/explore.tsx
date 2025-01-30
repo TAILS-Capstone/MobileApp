@@ -43,8 +43,10 @@ export default function ExploreScreen() {
 // Styles pour l'écran Explore
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#1a1a3b', // Bleu foncé
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#1a1a3b', // Couleur principale de fond
+    paddingHorizontal: 20,
   },
   content: {
     flexGrow: 1,

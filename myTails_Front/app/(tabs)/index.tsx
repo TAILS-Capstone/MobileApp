@@ -9,7 +9,7 @@ export default function SplashScreen() {
   const router = useRouter();
   useEffect(() => {
     setTimeout(() => {
-      router.replace('/userLogin'); // Redirect to the User Mode page
+      router.replace('/loginPage'); // Redirect to the User Mode page
     }, 3000);
   }, []);
 
@@ -20,7 +20,7 @@ export default function SplashScreen() {
     >
       <Text style={styles.title}>T.A.I.L.S</Text>
       <Text style={styles.subtitle}>
-        TACTICAL AERIAL INSIGHT AND LOCALIZATION SUITE
+      TACTICAL AERIAL INSIGHT AND LOCALIZATION SUITE
       </Text>
     </LinearGradient>
   );
