@@ -1,4 +1,4 @@
-import { Tabs } from 'expo-router';
+import { Tabs } from 'expo-router'; 
 import React from 'react';
 import { Platform } from 'react-native';
 
@@ -26,6 +26,7 @@ export default function TabLayout() {
           default: {},
         }),
       }}>
+      {/* Onglet Accueil */}
       <Tabs.Screen
         name="index"
         options={{
@@ -33,6 +34,8 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
+      
+      {/* Onglet Explore */}
       <Tabs.Screen
         name="explore"
         options={{
@@ -40,11 +43,22 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
         }}
       />
-       <Tabs.Screen
+
+      {/* Onglet Map */}
+      <Tabs.Screen
         name="map"
         options={{
           title: 'Carte',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="map.fill" color={color} />,
+        }}
+      />
+
+      {/* Onglet Dashboard */}
+      <Tabs.Screen
+        name="dashboard"
+        options={{
+          title: 'Dashboard',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="chart.bar.fill" color={color} />,
         }}
       />
     </Tabs>

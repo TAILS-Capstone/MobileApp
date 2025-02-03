@@ -30,20 +30,30 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-      {/* Pages principales */}
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        {/* Pages principales */}
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
-      {/* Écrans de connexion */}
-      <Stack.Screen name="userLogin" options={{ title: 'User Login' }} />
-      <Stack.Screen name="adminLogin" options={{ title: 'Admin Login' }} />
+        {/* Nouvelle page Login */}
+        <Stack.Screen name="loginPage" options={{ title: 'Login' }} />
 
-      {/* Écran pour les erreurs */}
-      <Stack.Screen name="+not-found" options={{ title: 'Page Not Found' }} />
-    </Stack>
+        {/* Carte */}
+        <Stack.Screen name="(tabs)/map" options={{ title: 'Map' }} />
+
+        {/* Historique */}
+        <Stack.Screen name="(tabs)/history" options={{ title: 'History' }} />
+
+        {/* Paramètres */}
+        <Stack.Screen name="(tabs)/settings" options={{ title: 'Settings' }} />
+
+        {/* Page de sécurité */}
+        <Stack.Screen name="security" options={{ title: 'Security' }} />
+
+        {/* Écran pour les erreurs */}
+        <Stack.Screen name="+not-found" options={{ title: 'Page Not Found' }} />
+      </Stack>
 
       {/* Configuration de la barre d'état */}
       <StatusBar style="auto" />
     </ThemeProvider>
   );
-  
 }
