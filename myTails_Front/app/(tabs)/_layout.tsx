@@ -1,5 +1,6 @@
-import { Tabs } from 'expo-router'; 
+import { Redirect, Tabs } from 'expo-router';
 import React from 'react';
+import { AuthProvider, useAuth } from '@/contexts/AuthContext';
 import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
@@ -10,6 +11,7 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const { isAuthenticated } = useAuth();
 
   return (
     <Tabs

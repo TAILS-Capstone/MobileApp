@@ -106,12 +106,12 @@ export default function MapNative() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   map: {
     width: Dimensions.get('window').width * 0.9,
-    height: Dimensions.get('window').height * 0.5,
+    height: Dimensions.get('window').height * 0.42,
     borderRadius: 10,
   },
   inputGroup: {
@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     marginBottom: 5,
+    color: '#f5f5f5',
   },
   input: {
     height: 40,
@@ -128,5 +129,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     paddingLeft: 10,
+    color: '#f5f5f5',
   },
 });
