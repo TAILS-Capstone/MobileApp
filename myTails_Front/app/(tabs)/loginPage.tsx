@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import { useAuth } from '@/contexts/AuthContext';
 import Svg, { Path } from 'react-native-svg';
 
 const LoginScreen = () => {
@@ -16,9 +17,12 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const { login } = useAuth();
+  
   const handleLogin = () => {
     if (email && password) {
-      router.push('/(tabs)/dashboard'); // Redirection après connexion réussie
+      login();
+      router.push('/(tabs)'); // Redirect to main tabs after login
     } else {
       alert('Veuillez entrer un email et un mot de passe.');
     }
