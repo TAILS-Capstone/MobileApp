@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
-import Map from '../../components/Map';
+import Map from '../../components/Map/Map.tsx';
 
 export default function MapScreen() {
   return (
