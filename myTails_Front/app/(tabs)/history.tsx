@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
 
 const flightHistory = [
   {
@@ -21,11 +23,12 @@ const flightHistory = [
     image: require('../../assets/images/drone.png'),
   },
 ];
+
 export default function HistoryScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Historique des vols</Text>
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         {flightHistory.map((flight) => (
           <View key={flight.id} style={styles.card}>
             <Image source={flight.image} style={styles.image} />
@@ -44,35 +47,41 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1a1a3b',
-    padding: 20,
+    paddingHorizontal: width * 0.05,
+    paddingTop: height * 0.05,
+  },
+  scrollContent: {
+    paddingBottom: height * 0.05, // Prevents cutoff on small screens
   },
   title: {
-    fontSize: 24,
+    fontSize: Math.max(width * 0.06, 22),
     fontWeight: 'bold',
     color: '#fff',
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: height * 0.03,
   },
   card: {
     backgroundColor: '#29294d',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 15,
-    flexDirection: 'row', // Add horizontal layout
-    alignItems: 'center', // Center items vertically
+    padding: height * 0.025,
+    borderRadius: width * 0.03,
+    marginBottom: height * 0.02,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   image: {
-    width: 100, // Reduced width
-    height: 75, // Reduced height
-    borderRadius: 10,
-    marginRight: 15, // Add spacing between image and text
+    width: width * 0.25, // Dynamic image width
+    height: width * 0.18, // Dynamic image height
+    borderRadius: width * 0.03,
+    marginRight: width * 0.05,
   },
   textContainer: {
-    flex: 1, // Take remaining space
+    flex: 1,
   },
   text: {
     color: '#fff',
-    fontSize: 16,
-    marginBottom: 5, // Add spacing between text lines
+    fontSize: Math.max(width * 0.045, 14),
+    marginBottom: height * 0.005,
   },
 });
+
+export default HistoryScreen;

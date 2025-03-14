@@ -1,16 +1,20 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import "expo-router/entry";
 
+const { width, height } = Dimensions.get('window');
 
 export default function SplashScreen() {
   const router = useRouter();
+
   useEffect(() => {
-    setTimeout(() => {
-      router.replace('/loginPage'); // Redirect to the User Mode page
+    const timeout = setTimeout(() => {
+      router.replace('/loginPage'); // Redirect to the login page
     }, 3000);
+
+    return () => clearTimeout(timeout); // Cleanup to prevent memory leak
   }, []);
 
   return (
@@ -20,7 +24,7 @@ export default function SplashScreen() {
     >
       <Text style={styles.title}>T.A.I.L.S</Text>
       <Text style={styles.subtitle}>
-      TACTICAL AERIAL INSIGHT AND LOCALIZATION SUITE
+        TACTICAL AERIAL INSIGHT AND LOCALIZATION SUITE
       </Text>
     </LinearGradient>
   );
@@ -31,17 +35,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%',
+    height: '100%',
   },
   title: {
-    fontSize: 48,
+    fontSize: Math.max(width * 0.12, 32), // Ensures large, readable title
     color: '#00ffff',
     fontWeight: 'bold',
     textAlign: 'center',
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: Math.max(width * 0.045, 14), // Scales properly on small screens
     color: '#00ffff',
-    marginTop: 10,
+    marginTop: height * 0.02,
     textAlign: 'center',
+    paddingHorizontal: width * 0.1, // Prevents text cutoff
   },
 });
+
+export default SplashScreen;

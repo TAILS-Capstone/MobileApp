@@ -1,13 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Dimensions } from 'react-native';
 import Map from '../../components/Map';
+
+const { width, height } = Dimensions.get('window');
 
 export default function MapScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Text style={styles.title}>Carte</Text>
-        <Map />
+        <View style={styles.mapContainer}>
+          <Map />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -16,24 +19,26 @@ export default function MapScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#1a1a3b', // Couleur principale de fond,
+    backgroundColor: '#1a1a3b',
   },
   container: {
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#1a1a3b',
+    paddingTop: height * 0.04,
   },
   title: {
-    fontSize: 24,
+    fontSize: Math.max(width * 0.065, 22), // Dynamic text scaling
     fontWeight: 'bold',
-    marginVertical: 20,
+    marginBottom: height * 0.02,
     color: '#f5f5f5',
-  },
-  text: {
-    fontSize: 16,
     textAlign: 'center',
-    color: '#f5f5f5',
-    marginTop: 20,
-    paddingHorizontal: 20,
+  },
+  mapContainer: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
   },
 });
+
+export default MapScreen;

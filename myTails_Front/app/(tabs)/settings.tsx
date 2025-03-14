@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, Dimensions } from 'react-native';
 import { useRouter } from 'expo-router';
+
+const { width, height } = Dimensions.get('window');
 
 export default function SettingsScreen() {
   const router = useRouter();
@@ -30,26 +32,28 @@ export default function SettingsScreen() {
   const handleAbout = () => {
     Alert.alert(
       'À propos',
-      'TAILS v1.0\nDéveloppé par Maureen&Mouad.',
+      'TAILS v1.0\nDéveloppé par Maureen & Mouad.',
       [{ text: 'OK' }]
     );
   };
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Paramètres</Text>
+
       {/* Option : Permissions */}
-      <TouchableOpacity style={styles.optionButton} onPress={handlePermissions}>
-        <Text style={styles.optionText}>Vérifier les permissions</Text>
+      <TouchableOpacity style={styles.optionButton} onPress={handlePermissions} activeOpacity={0.7}>
+        <Text style={styles.optionText} numberOfLines={1}>Vérifier les permissions</Text>
       </TouchableOpacity>
 
       {/* Option : À propos */}
-      <TouchableOpacity style={styles.optionButton} onPress={handleAbout}>
-        <Text style={styles.optionText}>À propos de l'application</Text>
+      <TouchableOpacity style={styles.optionButton} onPress={handleAbout} activeOpacity={0.7}>
+        <Text style={styles.optionText} numberOfLines={1}>À propos de l'application</Text>
       </TouchableOpacity>
 
       {/* Option : Déconnexion */}
-      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-        <Text style={styles.logoutText}>Se déconnecter</Text>
+      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout} activeOpacity={0.7}>
+        <Text style={styles.logoutText} numberOfLines={1}>Se déconnecter</Text>
       </TouchableOpacity>
     </View>
   );
@@ -60,39 +64,57 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1a1a3b', // Couleur principale de fond
-    paddingHorizontal: 20,
+    backgroundColor: '#1a1a3b',
+    paddingHorizontal: width * 0.05,
   },
   title: {
-    fontSize: 28,
+    fontSize: Math.max(width * 0.07, 22),
     fontWeight: 'bold',
     color: '#fff',
-    textAlign: 'center',  
-    marginBottom: 30,
+    textAlign: 'center',
+    marginBottom: height * 0.04,
   },
   optionButton: {
     backgroundColor: '#2a2a5b',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 10,
-    marginVertical: 10,
+    paddingVertical: height * 0.02,
+    borderRadius: width * 0.04,
+    marginVertical: height * 0.015,
+    width: '90%', // Increased width to prevent text wrapping
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 3, 
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
   optionText: {
-    fontSize: 16,
+    fontSize: Math.max(width * 0.045, 16),
     color: '#fff',
     textAlign: 'center',
+    flexWrap: 'nowrap', // Prevents text from breaking into a second line
   },
   logoutButton: {
     backgroundColor: '#ff4d4d',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 10,
-    marginTop: 20,
+    paddingVertical: height * 0.02,
+    borderRadius: width * 0.04,
+    marginTop: height * 0.03,
+    width: '90%', // Increased width
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
   logoutText: {
-    fontSize: 16,
+    fontSize: Math.max(width * 0.045, 16),
     color: '#fff',
-    textAlign: 'center',
     fontWeight: 'bold',
+    textAlign: 'center',
+    flexWrap: 'nowrap',
   },
 });
+
+export default SettingsScreen;
