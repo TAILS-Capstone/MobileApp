@@ -11,39 +11,39 @@ export default function ExploreScreen() {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        {/* Titre principal */}
+        {/* Main Title */}
         <Text style={styles.title}>Explore</Text>
-        <Text style={styles.subtitle}>Découvrez les fonctionnalités de TAILS</Text>
+        <Text style={styles.subtitle}>Discover TAILS features</Text>
 
-        {/* Bouton "Voir la Carte" */}
+        {/* "View Map" Button */}
         <TouchableOpacity
           onPress={() => router.push('/map')}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>📍 Voir la Carte</Text>
+          <Text style={styles.buttonText}>📍 View Map</Text>
         </TouchableOpacity>
 
-        {/* Bouton "Historique des vols" */}
+        {/* "Flight History" Button */}
         <TouchableOpacity
           onPress={() => router.push('/history')}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>📊 Historique des vols</Text>
+          <Text style={styles.buttonText}>📊 Flight History</Text>
         </TouchableOpacity>
 
-        {/* Bouton "Paramètres" */}
+        {/* "Settings" Button */}
         <TouchableOpacity
           onPress={() => router.push('/settings')}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>⚙️ Paramètres</Text>
+          <Text style={styles.buttonText}>⚙️ Settings</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
   );
 }
 
-// Styles pour l'écran Explore
+// Styles for the Explore screen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -87,5 +87,3 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
-
-export default ExploreScreen;

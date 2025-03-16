@@ -7,53 +7,53 @@ const { width, height } = Dimensions.get('window');
 export default function SettingsScreen() {
   const router = useRouter();
 
-  // Gestion de la déconnexion
+  // Logout handling
   const handleLogout = () => {
     Alert.alert(
-      'Déconnexion',
-      'Êtes-vous sûr de vouloir vous déconnecter ?',
+      'Logout',
+      'Are you sure you want to log out?',
       [
-        { text: 'Annuler', style: 'cancel' },
-        { text: 'Oui', onPress: () => router.push('/loginPage') },
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Yes', onPress: () => router.push('/loginPage') },
       ]
     );
   };
 
-  // Gestion des permissions
+  // Permissions handling
   const handlePermissions = () => {
     Alert.alert(
       'Permissions',
-      'Vérifiez que toutes les permissions nécessaires sont activées pour le bon fonctionnement.',
+      'Please verify that all necessary permissions are enabled for proper functionality.',
       [{ text: 'OK' }]
     );
   };
 
-  // À propos
+  // About
   const handleAbout = () => {
     Alert.alert(
-      'À propos',
-      'TAILS v1.0\nDéveloppé par Maureen & Mouad.',
+      'About',
+      'TAILS v1.0\nDeveloped by Maureen & Mouad.',
       [{ text: 'OK' }]
     );
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Paramètres</Text>
+      <Text style={styles.title}>Settings</Text>
 
-      {/* Option : Permissions */}
+      {/* Option: Permissions */}
       <TouchableOpacity style={styles.optionButton} onPress={handlePermissions} activeOpacity={0.7}>
-        <Text style={styles.optionText} numberOfLines={1}>Vérifier les permissions</Text>
+        <Text style={styles.optionText} numberOfLines={1}>Check permissions</Text>
       </TouchableOpacity>
 
-      {/* Option : À propos */}
+      {/* Option: About */}
       <TouchableOpacity style={styles.optionButton} onPress={handleAbout} activeOpacity={0.7}>
-        <Text style={styles.optionText} numberOfLines={1}>À propos de l'application</Text>
+        <Text style={styles.optionText} numberOfLines={1}>About the application</Text>
       </TouchableOpacity>
 
-      {/* Option : Déconnexion */}
+      {/* Option: Logout */}
       <TouchableOpacity style={styles.logoutButton} onPress={handleLogout} activeOpacity={0.7}>
-        <Text style={styles.logoutText} numberOfLines={1}>Se déconnecter</Text>
+        <Text style={styles.logoutText} numberOfLines={1}>Log out</Text>
       </TouchableOpacity>
     </View>
   );
@@ -116,5 +116,3 @@ const styles = StyleSheet.create({
     flexWrap: 'nowrap',
   },
 });
-
-export default SettingsScreen;

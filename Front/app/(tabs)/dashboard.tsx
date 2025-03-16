@@ -11,37 +11,37 @@ export default function DashboardScreen() {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.content}>
-        {/* Header du Dashboard */}
-        <Text style={styles.title}>Bienvenue sur TAILS</Text>
-        <Text style={styles.subtitle}>Votre tableau de bord personnalisé</Text>
+        {/* Dashboard Header */}
+        <Text style={styles.title}>Welcome to TAILS</Text>
+        <Text style={styles.subtitle}>Your personalized dashboard</Text>
 
-        {/* Section Statistiques */}
+        {/* Statistics Section */}
         <View style={styles.statsContainer}>
           <View style={styles.statBox}>
             <Ionicons name="airplane" size={width * 0.08} color="#007bff" />
             <Text style={styles.statNumber}>12</Text>
-            <Text style={styles.statLabel}>Vols réalisés</Text>
+            <Text style={styles.statLabel}>Flights completed</Text>
           </View>
           <View style={styles.statBox}>
             <Ionicons name="location" size={width * 0.08} color="#007bff" />
             <Text style={styles.statNumber}>8</Text>
-            <Text style={styles.statLabel}>Points GPS collectés</Text>
+            <Text style={styles.statLabel}>GPS points collected</Text>
           </View>
         </View>
 
-        {/* Activité récente */}
-        <Text style={styles.sectionTitle}>Activité récente</Text>
+        {/* Recent Activity */}
+        <Text style={styles.sectionTitle}>Recent Activity</Text>
         <View style={styles.recentActivity}>
-          <Text style={styles.activityItem}>📅 Dernier vol : 25 Janvier 2025</Text>
-          <Text style={styles.activityItem}>🕒 Dernière connexion : 29 Janvier 2025</Text>
+          <Text style={styles.activityItem}>📅 Last flight: January 25, 2025</Text>
+          <Text style={styles.activityItem}>🕒 Last login: January 29, 2025</Text>
         </View>
 
-        {/* Bouton pour rediriger vers une page avec onglets */}
+        {/* Button to navigate to tabbed page */}
         <TouchableOpacity
           style={styles.actionButton}
           onPress={() => router.push('/(tabs)/explore')}
         >
-          <Text style={styles.actionButtonText}>📁 Accéder aux fonctionnalités</Text>
+          <Text style={styles.actionButtonText}>📁 Access Features</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
@@ -122,5 +122,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
-export default DashboardScreen;
