@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
+  Alert,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
@@ -18,17 +19,61 @@ const LoginScreen = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const { login } = useAuth();
-  
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePassword = (password: string) => {
+    return password.length >= 6;
+  };
+
   const handleLogin = () => {
-    if (email && password) {
+    setEmailError('');
+    setPasswordError('');
+
+    let isValid = true;
+
+    if (!email) {
+      setEmailError('Email is required');
+      isValid = false;
+    } else if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email address');
+      isValid = false;
+    }
+
+    if (!password) {
+      setPasswordError('Password is required');
+      isValid = false;
+    } else if (!validatePassword(password)) {
+      setPasswordError('Password must be at least 6 characters');
+      isValid = false;
+    }
+
+    if (isValid && !isLoggedIn) {
+      setIsLoggedIn(true);
       login();
-      router.push('/(tabs)'); // Redirect to main tabs after login
-    } else {
-      alert('Veuillez entrer un email et un mot de passe.');
+      router.replace('/(tabs)');
     }
   };
+
+  const handleForgotPassword = () => {
+    router.push('/ForgotPassword');
+  };
+
+  const handleSignup = () => {
+    router.push('/SignUp');
+  };
+
+  if (isLoggedIn) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
@@ -52,11 +97,15 @@ const LoginScreen = () => {
           placeholder="Email"
           placeholderTextColor="#ccc"
           value={email}
-          onChangeText={setEmail}
+          onChangeText={(text) => {
+            setEmail(text);
+            setEmailError('');
+          }}
           keyboardType="email-address"
           autoCapitalize="none"
         />
       </View>
+      {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
 
       <View style={styles.inputContainer}>
         <Ionicons name="lock-closed-outline" size={width * 0.07} color="#fff" style={styles.icon} />
@@ -66,19 +115,23 @@ const LoginScreen = () => {
           placeholderTextColor="#ccc"
           secureTextEntry
           value={password}
-          onChangeText={setPassword}
+          onChangeText={(text) => {
+            setPassword(text);
+            setPasswordError('');
+          }}
         />
       </View>
+      {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
 
       <TouchableOpacity style={styles.loginButton} onPress={handleLogin} activeOpacity={0.7}>
         <Text style={styles.loginButtonText}>Log in</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handleForgotPassword}>
         <Text style={styles.forgotPassword}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handleSignup}>
         <Text style={styles.signupText}>Don't Have an Account? Sign Up</Text>
       </TouchableOpacity>
     </View>
@@ -90,7 +143,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1a1a3b', // Dark blue background
+    backgroundColor: '#1a1a3b',
     paddingHorizontal: width * 0.05,
   },
   title: {
@@ -104,7 +157,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     borderRadius: width * 0.04,
-    marginBottom: height * 0.02,
+    marginBottom: height * 0.01,
     paddingHorizontal: width * 0.04,
     width: '90%',
     height: height * 0.07,
@@ -116,6 +169,14 @@ const styles = StyleSheet.create({
     flex: 1,
     color: '#fff',
     fontSize: Math.max(width * 0.045, 14),
+  },
+  errorText: {
+    color: '#ff6b6b',
+    fontSize: Math.max(width * 0.035, 12),
+    alignSelf: 'flex-start',
+    marginLeft: width * 0.08,
+    marginBottom: height * 0.01,
+    marginTop: -5,
   },
   loginButton: {
     backgroundColor: '#1E90FF',
