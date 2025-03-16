@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Dimensions } from 'react-native';
-import Map from '../../components/Map';
+import Map from '../../components/Map/Map';
 
 const { width, height } = Dimensions.get('window');
 
@@ -41,4 +41,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MapScreen;
