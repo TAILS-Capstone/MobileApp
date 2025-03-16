@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
+const { width, height } = Dimensions.get('window');
+
 export default function DashboardScreen() {
-  const router = useRouter(); // Nécessaire pour la navigation
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
@@ -16,12 +18,12 @@ export default function DashboardScreen() {
         {/* Section Statistiques */}
         <View style={styles.statsContainer}>
           <View style={styles.statBox}>
-            <Ionicons name="airplane" size={28} color="#007bff" />
+            <Ionicons name="airplane" size={width * 0.08} color="#007bff" />
             <Text style={styles.statNumber}>12</Text>
             <Text style={styles.statLabel}>Vols réalisés</Text>
           </View>
           <View style={styles.statBox}>
-            <Ionicons name="location" size={28} color="#007bff" />
+            <Ionicons name="location" size={width * 0.08} color="#007bff" />
             <Text style={styles.statNumber}>8</Text>
             <Text style={styles.statLabel}>Points GPS collectés</Text>
           </View>
@@ -37,7 +39,7 @@ export default function DashboardScreen() {
         {/* Bouton pour rediriger vers une page avec onglets */}
         <TouchableOpacity
           style={styles.actionButton}
-          onPress={() => router.push('/(tabs)/explore')} // Redirige vers Explore ou autre page
+          onPress={() => router.push('/(tabs)/explore')}
         >
           <Text style={styles.actionButtonText}>📁 Accéder aux fonctionnalités</Text>
         </TouchableOpacity>
@@ -49,79 +51,76 @@ export default function DashboardScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding : 16 ,
+    paddingHorizontal: width * 0.04,
     backgroundColor: '#1a1a3b',
-
   },
   content: {
-    padding: 16,
+    paddingVertical: height * 0.03,
   },
   title: {
-    fontSize: 28,
+    fontSize: width * 0.07, // Responsive text size
     fontWeight: 'bold',
     color: '#fff',
     textAlign: 'center',
-    marginTop: 20,
-    marginBottom: 10,
+    marginBottom: height * 0.02,
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: width * 0.045,
     color: '#d1d1d1',
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: height * 0.03,
   },
   statsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 30,
-    padding: 16,
+    marginBottom: height * 0.04,
   },
   statBox: {
     alignItems: 'center',
     backgroundColor: '#2a2a5b',
-    borderRadius: 10,
-    padding: 16,
+    borderRadius: width * 0.03,
+    padding: height * 0.025,
     width: '48%',
   },
   statNumber: {
-    fontSize: 24,
+    fontSize: width * 0.08,
     fontWeight: 'bold',
     color: '#fff',
-    marginTop: 10,
+    marginTop: height * 0.01,
   },
   statLabel: {
-    fontSize: 14,
+    fontSize: width * 0.04,
     color: '#d1d1d1',
-    marginTop: 5,
     textAlign: 'center',
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: width * 0.05,
     fontWeight: 'bold',
     color: '#fff',
-    marginBottom: 10,
+    marginBottom: height * 0.02,
   },
   recentActivity: {
     backgroundColor: '#2a2a5b',
-    padding: 16,
-    borderRadius: 10,
-    marginBottom: 20,
+    padding: height * 0.025,
+    borderRadius: width * 0.03,
+    marginBottom: height * 0.03,
   },
   activityItem: {
-    fontSize: 16,
+    fontSize: width * 0.045,
     color: '#fff',
-    marginBottom: 10,
+    marginBottom: height * 0.015,
   },
   actionButton: {
     backgroundColor: '#007bff',
-    paddingVertical: 14,
-    paddingHorizontal: 20,
-    borderRadius: 10,
+    paddingVertical: height * 0.02,
+    borderRadius: width * 0.03,
     alignItems: 'center',
   },
   actionButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: width * 0.045,
     fontWeight: 'bold',
   },
 });
+
+export default DashboardScreen;

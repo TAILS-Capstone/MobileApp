@@ -1,20 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { router, useRouter } from 'expo-router';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import { useRouter } from 'expo-router';
 import "expo-router/entry";
+
+const { width, height } = Dimensions.get('window');
+
 export default function ExploreScreen() {
   const router = useRouter();
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.content}>
+      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         {/* Titre principal */}
         <Text style={styles.title}>Explore</Text>
         <Text style={styles.subtitle}>Découvrez les fonctionnalités de TAILS</Text>
 
         {/* Bouton "Voir la Carte" */}
         <TouchableOpacity
-          onPress={() => router.push('/map')} // Navigue vers la page "Carte"
+          onPress={() => router.push('/map')}
           style={styles.button}
         >
           <Text style={styles.buttonText}>📍 Voir la Carte</Text>
@@ -22,7 +25,7 @@ export default function ExploreScreen() {
 
         {/* Bouton "Historique des vols" */}
         <TouchableOpacity
-          onPress={() => router.push('/history')} // Navigue vers une page historique (à créer)
+          onPress={() => router.push('/history')}
           style={styles.button}
         >
           <Text style={styles.buttonText}>📊 Historique des vols</Text>
@@ -30,7 +33,7 @@ export default function ExploreScreen() {
 
         {/* Bouton "Paramètres" */}
         <TouchableOpacity
-          onPress={() => router.push('/settings')} // Navigue vers une page paramètres (à créer)
+          onPress={() => router.push('/settings')}
           style={styles.button}
         >
           <Text style={styles.buttonText}>⚙️ Paramètres</Text>
@@ -43,46 +46,46 @@ export default function ExploreScreen() {
 // Styles pour l'écran Explore
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1a1a3b', // Couleur principale de fond
-    paddingHorizontal: 20,
+    flex: 1,
+    backgroundColor: '#1a1a3b',
+    paddingHorizontal: width * 0.05,
   },
   content: {
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
+    paddingVertical: height * 0.03,
   },
   title: {
-    fontSize: 28,
+    fontSize: width * 0.07,
     fontWeight: 'bold',
     color: '#fff',
-    marginBottom: 10,
+    marginBottom: height * 0.02,
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: width * 0.045,
     color: '#d1d1d1',
-    marginBottom: 20,
     textAlign: 'center',
+    marginBottom: height * 0.03,
   },
   button: {
-    backgroundColor: '#007bff', // Bleu vif
-    paddingVertical: 14,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-    marginVertical: 8,
+    backgroundColor: '#007bff',
+    paddingVertical: height * 0.018,
+    borderRadius: width * 0.03,
+    marginVertical: height * 0.015,
     width: '85%',
     alignItems: 'center',
-    elevation: 3, // Ombre pour Android
-    shadowColor: '#000', // Ombre pour iOS
+    elevation: 3,
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
   },
   buttonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: width * 0.045,
     fontWeight: '600',
   },
 });
+
+export default ExploreScreen;
