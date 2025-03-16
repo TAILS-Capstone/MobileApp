@@ -19,43 +19,179 @@ const LoginScreen = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [usernameError, setUsernameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const { login } = useAuth();
 
+  const validateUsername = (username: string) => {
+    // Trim the username to remove leading/trailing whitespace
+    const trimmedUsername = username.trim();
+    
+    // Check if username is empty
+    if (!trimmedUsername) {
+      return { isValid: false, reason: 'Username cannot be empty' };
+    }
+    
+    // Check minimum length (commonly 3-4 characters)
+    if (trimmedUsername.length < 3) {
+      return { isValid: false, reason: 'Username must be at least 3 characters' };
+    }
+    
+    // Check maximum length (commonly 20-30 characters)
+    if (trimmedUsername.length > 30) {
+      return { isValid: false, reason: 'Username cannot exceed 30 characters' };
+    }
+    
+    // Check for valid characters (alphanumeric, underscores, hyphens)
+    // This is a common pattern that allows letters, numbers, underscores, hyphens, and periods
+    const usernameRegex = /^[a-zA-Z0-9._-]+$/;
+    if (!usernameRegex.test(trimmedUsername)) {
+      return { isValid: false, reason: 'Username can only contain letters, numbers, underscores, hyphens, and periods' };
+    }
+    
+    // Check that username doesn't start with a number, underscore, or special character
+    if (/^[^a-zA-Z]/.test(trimmedUsername)) {
+      return { isValid: false, reason: 'Username must start with a letter' };
+    }
+    
+    // Check for consecutive special characters
+    if (/[._-]{2,}/.test(trimmedUsername)) {
+      return { isValid: false, reason: 'Username cannot contain consecutive special characters' };
+    }
+    
+    // Valid username
+    return { isValid: true };
+  };
+
   const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    // Trim the email to remove leading/trailing whitespace
+    const trimmedEmail = email.trim();
+    
+    // Check if email is empty
+    if (!trimmedEmail) {
+      return { isValid: false, reason: 'Email cannot be empty' };
+    }
+    
+    // Basic RFC 5322 compliant regex that catches most invalid emails
+    // This checks for proper format with username, @ symbol, domain, and TLD
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    
+    if (!emailRegex.test(trimmedEmail)) {
+      return { isValid: false, reason: 'Invalid email format' };
+    }
+    
+    // Additional specific validations
+    
+    // Check email length (most mail servers won't accept emails > 254 chars)
+    if (trimmedEmail.length > 254) {
+      return { isValid: false, reason: 'Email is too long' };
+    }
+    
+    // Check local part length (before the @)
+    const localPart = trimmedEmail.split('@')[0];
+    if (localPart.length > 64) {
+      return { isValid: false, reason: 'Username part of email is too long' };
+    }
+    
+    // Check for consecutive dots which are invalid
+    if (/\.{2,}/.test(trimmedEmail)) {
+      return { isValid: false, reason: 'Email cannot contain consecutive dots' };
+    }
+    
+    // Valid email
+    return { isValid: true };
   };
 
   const validatePassword = (password: string) => {
-    return password.length >= 6;
+    // Check for minimum length (NIST recommends at least 8 characters)
+    const hasMinLength = password.length >= 8;
+    
+    // Check for at least one uppercase letter
+    const hasUpperCase = /[A-Z]/.test(password);
+    
+    // Check for at least one lowercase letter
+    const hasLowerCase = /[a-z]/.test(password);
+    
+    // Check for at least one digit
+    const hasDigit = /[0-9]/.test(password);
+    
+    // Check for at least one special character
+    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+    
+    // Ensure password doesn't contain common patterns
+    const hasNoCommonPatterns = !/(123456|password|qwerty|admin)/i.test(password);
+    
+    // Return detailed validation results or a simple boolean
+    return {
+      isValid: hasMinLength && hasUpperCase && hasLowerCase && hasDigit && hasSpecialChar && hasNoCommonPatterns,
+      requirements: {
+        hasMinLength,
+        hasUpperCase,
+        hasLowerCase,
+        hasDigit,
+        hasSpecialChar,
+        hasNoCommonPatterns
+      }
+    };
   };
 
   const handleLogin = () => {
+    setUsernameError('');
     setEmailError('');
     setPasswordError('');
-
+  
     let isValid = true;
-
+    
+    if (!username) {
+      setUsernameError('Username is required');
+      isValid = false;
+    } else {
+      const usernameValidation = validateUsername(username);
+      if (!usernameValidation.isValid) {
+        setUsernameError(usernameValidation.reason);
+        isValid = false;
+      }
+    }
+  
     if (!email) {
       setEmailError('Email is required');
       isValid = false;
-    } else if (!validateEmail(email)) {
-      setEmailError('Please enter a valid email address');
-      isValid = false;
+    } else {
+      const emailValidation = validateEmail(email);
+      if (!emailValidation.isValid) {
+        setEmailError(emailValidation.reason);
+        isValid = false;
+      }
     }
-
+  
     if (!password) {
       setPasswordError('Password is required');
       isValid = false;
-    } else if (!validatePassword(password)) {
-      setPasswordError('Password must be at least 6 characters');
-      isValid = false;
+    } else {
+      const passwordValidation = validatePassword(password);
+      if (!passwordValidation.isValid) {
+        // Create a more helpful error message based on which requirements failed
+        const { requirements } = passwordValidation;
+        
+        // Start with a general message
+        let errorMsg = 'Password must:';
+        
+        // Add specific requirements that failed
+        if (!requirements.hasMinLength) errorMsg += '\n- Be at least 8 characters';
+        if (!requirements.hasUpperCase) errorMsg += '\n- Include an uppercase letter';
+        if (!requirements.hasLowerCase) errorMsg += '\n- Include a lowercase letter';
+        if (!requirements.hasDigit) errorMsg += '\n- Include a number';
+        if (!requirements.hasSpecialChar) errorMsg += '\n- Include a special character';
+        if (!requirements.hasNoCommonPatterns) errorMsg += '\n- Avoid common patterns (123456, password, etc.)';
+        
+        setPasswordError(errorMsg);
+        isValid = false;
+      }
     }
-
+  
     if (isValid && !isLoggedIn) {
       setIsLoggedIn(true);
       login();
@@ -86,9 +222,14 @@ const LoginScreen = () => {
           placeholder="Username"
           placeholderTextColor="#ccc"
           value={username}
-          onChangeText={setUsername}
+          onChangeText={(text) => {
+            setUsername(text);
+            setUsernameError('');
+          }}
+          autoCapitalize="none"
         />
       </View>
+      {usernameError ? <Text style={styles.errorText}>{usernameError}</Text> : null}
 
       <View style={styles.inputContainer}>
         <Ionicons name="mail-outline" size={width * 0.07} color="#fff" style={styles.icon} />

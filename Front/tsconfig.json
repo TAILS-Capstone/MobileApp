@@ -6,7 +6,10 @@
       "@/*": [
         "./*"
       ]
-    }
+    },
+    "jsx": "react-jsx" // For React 17+ and TypeScript 4.1+
+    // or
+    // "jsx": "react" // For older versions of React
   },
   "include": [
     "**/*.ts",

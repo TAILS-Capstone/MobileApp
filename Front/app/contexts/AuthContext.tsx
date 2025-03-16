@@ -6,6 +6,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
   loading: boolean;
+  signup: (data: { username: string, email: string, password: string }) => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -72,6 +73,34 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  // Signup function
+  const signup = async (data: { username: string, email: string, password: string }): Promise<boolean> => {
+    try {
+      setLoading(true);
+      
+      // Replace with actual API call to your registration endpoint
+      // const response = await api.post('/register', data);
+      
+      // Mock successful registration
+      const mockUser = { id: '123', email: data.email, username: data.username };
+      const mockToken = 'mock-jwt-token';
+      
+      // Store user data and token
+      localStorage.setItem('user', JSON.stringify(mockUser));
+      localStorage.setItem('token', mockToken);
+      
+      setUser(mockUser);
+      setIsAuthenticated(true);
+      
+      return true;
+    } catch (error) {
+      console.error('Signup failed:', error);
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Logout function
   const logout = () => {
     localStorage.removeItem('user');
@@ -86,6 +115,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     login,
     logout,
     loading,
+    signup,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -20,8 +20,42 @@ const ForgotPasswordScreen = () => {
   const [submitted, setSubmitted] = useState(false);
   
   const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    // Trim the email to remove leading/trailing whitespace
+    const trimmedEmail = email.trim();
+    
+    // Check if email is empty
+    if (!trimmedEmail) {
+      return { isValid: false, reason: 'Email cannot be empty' };
+    }
+    
+    // Basic RFC 5322 compliant regex that catches most invalid emails
+    // This checks for proper format with username, @ symbol, domain, and TLD
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    
+    if (!emailRegex.test(trimmedEmail)) {
+      return { isValid: false, reason: 'Invalid email format' };
+    }
+    
+    // Additional specific validations
+    
+    // Check email length (most mail servers won't accept emails > 254 chars)
+    if (trimmedEmail.length > 254) {
+      return { isValid: false, reason: 'Email is too long' };
+    }
+    
+    // Check local part length (before the @)
+    const localPart = trimmedEmail.split('@')[0];
+    if (localPart.length > 64) {
+      return { isValid: false, reason: 'Username part of email is too long' };
+    }
+    
+    // Check for consecutive dots which are invalid
+    if (/\.{2,}/.test(trimmedEmail)) {
+      return { isValid: false, reason: 'Email cannot contain consecutive dots' };
+    }
+    
+    // Valid email
+    return { isValid: true };
   };
   
   const handleSubmit = () => {
@@ -30,11 +64,10 @@ const ForgotPasswordScreen = () => {
     
     let isValid = true;
     
-    if (!email) {
-      setEmailError('Email is required');
-      isValid = false;
-    } else if (!validateEmail(email)) {
-      setEmailError('Please enter a valid email address');
+    // Use the validateEmail function correctly
+    const emailValidation = validateEmail(email);
+    if (!emailValidation.isValid) {
+      setEmailError(emailValidation.reason || 'Please enter a valid email address');
       isValid = false;
     }
     
