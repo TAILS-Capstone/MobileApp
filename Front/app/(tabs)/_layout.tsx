@@ -1,39 +1,86 @@
 import { Redirect, Tabs } from 'expo-router';
-import React from 'react';
-import { AuthProvider, useAuth } from '@/contexts/AuthContext';
+import React, { useEffect, useRef, useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
 import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import { Ionicons } from '@expo/vector-icons';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
+  const isMounted = useRef(false);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
+  useEffect(() => {
+    // Mark component as mounted
+    isMounted.current = true;
+    
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
+
+  // Check authentication status and update redirect state
+  useEffect(() => {
+    if (isMounted.current && !isLoading && !isAuthenticated) {
+      // Only set redirect after component is mounted and auth is checked
+      setShouldRedirect(true);
+    }
+  }, [isAuthenticated, isLoading]);
+
+  // Render redirect if needed
+  if (shouldRedirect) {
+    return <Redirect href="/loginPage" />;
+  }
+
+  // Show tabs for authenticated users or while still checking auth
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: '#ffffff',
+        tabBarInactiveTintColor: 'rgba(255, 255, 255, 0.6)',
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
+            borderTopWidth: 0,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: -3 },
+            shadowOpacity: 0.1,
+            shadowRadius: 3,
+            backgroundColor: 'rgba(26, 26, 59, 0.9)',
+            height: 85,
+            paddingBottom: 10
           },
-          default: {},
+          default: {
+            backgroundColor: '#1a1a3b',
+            borderTopWidth: 0,
+            elevation: 8,
+            height: 65,
+            paddingBottom: 5
+          },
         }),
+        tabBarLabelStyle: {
+          fontSize: 10,
+          fontWeight: '500',
+          marginBottom: Platform.OS === 'ios' ? 0 : 8,
+        },
+        tabBarIconStyle: {
+          marginTop: Platform.OS === 'ios' ? 5 : 0,
+        }
       }}>
       {/* Onglet Accueil */}
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ focused }) => <Ionicons name="home" size={28} color={focused ? '#ffffff' : 'rgba(255, 255, 255, 0.6)'} />,
         }}
       />
       
@@ -42,7 +89,7 @@ export default function TabLayout() {
         name="explore"
         options={{
           title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ focused }) => <Ionicons name="paper-plane" size={28} color={focused ? '#ffffff' : 'rgba(255, 255, 255, 0.6)'} />,
         }}
       />
 
@@ -51,7 +98,7 @@ export default function TabLayout() {
         name="map"
         options={{
           title: 'Carte',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="map.fill" color={color} />,
+          tabBarIcon: ({ focused }) => <Ionicons name="map" size={28} color={focused ? '#ffffff' : 'rgba(255, 255, 255, 0.6)'} />,
         }}
       />
 
@@ -60,7 +107,7 @@ export default function TabLayout() {
         name="dashboard"
         options={{
           title: 'Dashboard',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="chart.bar.fill" color={color} />,
+          tabBarIcon: ({ focused }) => <Ionicons name="stats-chart" size={28} color={focused ? '#ffffff' : 'rgba(255, 255, 255, 0.6)'} />,
         }}
       />
       
@@ -69,7 +116,7 @@ export default function TabLayout() {
         name="history"
         options={{
           title: 'History',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="clock.fill" color={color} />,
+          tabBarIcon: ({ focused }) => <Ionicons name="time" size={28} color={focused ? '#ffffff' : 'rgba(255, 255, 255, 0.6)'} />,
         }}
       />
       
@@ -78,7 +125,7 @@ export default function TabLayout() {
         name="settings"
         options={{
           title: 'Settings',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="gear" color={color} />,
+          tabBarIcon: ({ focused }) => <Ionicons name="settings" size={28} color={focused ? '#ffffff' : 'rgba(255, 255, 255, 0.6)'} />,
         }}
       />
     </Tabs>

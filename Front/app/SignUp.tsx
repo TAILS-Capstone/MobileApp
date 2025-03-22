@@ -7,10 +7,14 @@ import {
   StyleSheet,
   Dimensions,
   Alert,
+  ActivityIndicator,
+  ScrollView,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useAuth } from '@/contexts/AuthContext';
+import TechBackground from '@/components/ui/TechBackground';
+import CirclePattern from '@/components/ui/CirclePattern';
 
 const { width, height } = Dimensions.get('window');
 
@@ -24,8 +28,9 @@ const SignupScreen = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const { signup } = useAuth();
+  const { registerWithEmail } = useAuth();
   
   const validateUsername = (username: string) => {
     // Trim the username to remove leading/trailing whitespace
@@ -47,7 +52,6 @@ const SignupScreen = () => {
     }
     
     // Check for valid characters (alphanumeric, underscores, hyphens)
-    // This is a common pattern that allows letters, numbers, underscores, hyphens, and periods
     const usernameRegex = /^[a-zA-Z0-9._-]+$/;
     if (!usernameRegex.test(trimmedUsername)) {
       return { isValid: false, reason: 'Username can only contain letters, numbers, underscores, hyphens, and periods' };
@@ -64,7 +68,7 @@ const SignupScreen = () => {
     }
     
     // Valid username
-    return { isValid: true };
+    return { isValid: true, reason: '' };
   };
   
   const validateEmail = (email: string) => {
@@ -77,7 +81,6 @@ const SignupScreen = () => {
     }
     
     // Basic RFC 5322 compliant regex that catches most invalid emails
-    // This checks for proper format with username, @ symbol, domain, and TLD
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     
     if (!emailRegex.test(trimmedEmail)) {
@@ -103,7 +106,7 @@ const SignupScreen = () => {
     }
     
     // Valid email
-    return { isValid: true };
+    return { isValid: true, reason: '' };
   };
   
   const validatePassword = (password: string) => {
@@ -164,7 +167,7 @@ const SignupScreen = () => {
     return 'Password does not meet security requirements';
   };
   
-  const handleSignup = () => {
+  const handleSignup = async () => {
     // Reset error messages
     setUsernameError('');
     setEmailError('');
@@ -173,7 +176,7 @@ const SignupScreen = () => {
     
     let isValid = true;
     
-    // Username validation with the enhanced function
+    // Username validation
     if (!username) {
       setUsernameError('Username is required');
       isValid = false;
@@ -185,13 +188,19 @@ const SignupScreen = () => {
       }
     }
     
-    // Email validation with the enhanced function
-    const emailValidation = validateEmail(email);
-    if (!emailValidation.isValid) {
-      setEmailError(emailValidation.reason || 'Invalid email');
+    // Email validation
+    if (!email) {
+      setEmailError('Email is required');
       isValid = false;
+    } else {
+      const emailValidation = validateEmail(email);
+      if (!emailValidation.isValid) {
+        setEmailError(emailValidation.reason);
+        isValid = false;
+      }
     }
     
+    // Password validation
     if (!password) {
       setPasswordError('Password is required');
       isValid = false;
@@ -203,6 +212,7 @@ const SignupScreen = () => {
       }
     }
     
+    // Confirm password validation
     if (!confirmPassword) {
       setConfirmPasswordError('Please confirm your password');
       isValid = false;
@@ -212,16 +222,18 @@ const SignupScreen = () => {
     }
     
     if (isValid) {
-      // Call signup function from AuthContext with the required parameters
-      signup({ username, email: email.trim(), password })
-        .then(() => {
-          Alert.alert('Success', 'Account created successfully!', [
-            { text: 'OK', onPress: () => router.push('/loginPage') }
-          ]);
-        })
-        .catch((error) => {
-          Alert.alert('Error', error.message || 'Failed to create account');
-        });
+      setIsLoading(true);
+      try {
+        // Call registerWithEmail function from AuthContext
+        await registerWithEmail(email.trim(), password, username);
+        Alert.alert('Success', 'Account created successfully!', [
+          { text: 'OK', onPress: () => router.push('/loginPage') }
+        ]);
+      } catch (error: any) {
+        Alert.alert('Error', error.message || 'Failed to create account');
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -230,108 +242,139 @@ const SignupScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Create Account</Text>
+    <View style={styles.mainContainer}>
+      {/* Tech-themed background elements */}
+      <TechBackground />
+      <CirclePattern size={400} position={{ top: -180, right: -180 }} opacity={0.07} />
+      <CirclePattern size={320} position={{ bottom: -150, left: -130 }} color="#1E90FF" opacity={0.05} />
+      
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.container}>
+          <Text style={styles.title}>Create Account</Text>
 
-      <View style={styles.inputContainer}>
-        <Ionicons name="person-outline" size={width * 0.07} color="#fff" style={styles.icon} />
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          placeholderTextColor="#ccc"
-          value={username}
-          onChangeText={(text) => {
-            setUsername(text);
-            setUsernameError('');
-          }}
-          autoCapitalize="none"
-        />
-      </View>
-      {usernameError ? <Text style={styles.errorText}>{usernameError}</Text> : null}
+          <View style={styles.inputContainer}>
+            <Ionicons name="person-outline" size={width * 0.07} color="#fff" style={styles.icon} />
+            <TextInput
+              style={styles.input}
+              placeholder="Username"
+              placeholderTextColor="#ccc"
+              value={username}
+              onChangeText={(text) => {
+                setUsername(text);
+                setUsernameError('');
+              }}
+              autoCapitalize="none"
+            />
+          </View>
+          {usernameError ? <Text style={styles.errorText}>{usernameError}</Text> : null}
 
-      <View style={styles.inputContainer}>
-        <Ionicons name="mail-outline" size={width * 0.07} color="#fff" style={styles.icon} />
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#ccc"
-          value={email}
-          onChangeText={(text) => {
-            setEmail(text);
-            setEmailError('');
-          }}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-      </View>
-      {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
+          <View style={styles.inputContainer}>
+            <Ionicons name="mail-outline" size={width * 0.07} color="#fff" style={styles.icon} />
+            <TextInput
+              style={styles.input}
+              placeholder="Email"
+              placeholderTextColor="#ccc"
+              value={email}
+              onChangeText={(text) => {
+                setEmail(text);
+                setEmailError('');
+              }}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+          </View>
+          {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
 
-      <View style={styles.inputContainer}>
-        <Ionicons name="lock-closed-outline" size={width * 0.07} color="#fff" style={styles.icon} />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          placeholderTextColor="#ccc"
-          secureTextEntry
-          value={password}
-          onChangeText={(text) => {
-            setPassword(text);
-            setPasswordError('');
-          }}
-        />
-      </View>
-      {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
+          <View style={styles.inputContainer}>
+            <Ionicons name="lock-closed-outline" size={width * 0.07} color="#fff" style={styles.icon} />
+            <TextInput
+              style={styles.input}
+              placeholder="Password"
+              placeholderTextColor="#ccc"
+              secureTextEntry
+              value={password}
+              onChangeText={(text) => {
+                setPassword(text);
+                setPasswordError('');
+              }}
+            />
+          </View>
+          {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
 
-      <View style={styles.inputContainer}>
-        <Ionicons name="lock-closed-outline" size={width * 0.07} color="#fff" style={styles.icon} />
-        <TextInput
-          style={styles.input}
-          placeholder="Confirm Password"
-          placeholderTextColor="#ccc"
-          secureTextEntry
-          value={confirmPassword}
-          onChangeText={(text) => {
-            setConfirmPassword(text);
-            setConfirmPasswordError('');
-          }}
-        />
-      </View>
-      {confirmPasswordError ? <Text style={styles.errorText}>{confirmPasswordError}</Text> : null}
+          <View style={styles.inputContainer}>
+            <Ionicons name="lock-closed-outline" size={width * 0.07} color="#fff" style={styles.icon} />
+            <TextInput
+              style={styles.input}
+              placeholder="Confirm Password"
+              placeholderTextColor="#ccc"
+              secureTextEntry
+              value={confirmPassword}
+              onChangeText={(text) => {
+                setConfirmPassword(text);
+                setConfirmPasswordError('');
+              }}
+            />
+          </View>
+          {confirmPasswordError ? <Text style={styles.errorText}>{confirmPasswordError}</Text> : null}
 
-      <TouchableOpacity style={styles.signupButton} onPress={handleSignup} activeOpacity={0.7}>
-        <Text style={styles.signupButtonText}>Sign Up</Text>
-      </TouchableOpacity>
+          <TouchableOpacity style={styles.signupButton} onPress={handleSignup} activeOpacity={0.7} disabled={isLoading}>
+            {isLoading ? (
+              <ActivityIndicator color="#fff" size="small" />
+            ) : (
+              <Text style={styles.signupButtonText}>Create Account</Text>
+            )}
+          </TouchableOpacity>
 
-      <TouchableOpacity onPress={handleLoginRedirect}>
-        <Text style={styles.loginText}>Already Have an Account? Log In</Text>
-      </TouchableOpacity>
+          <TouchableOpacity onPress={handleLoginRedirect}>
+            <Text style={styles.loginText}>Already Have an Account? Log In</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    backgroundColor: '#1a1a3b',
+  },
+  scrollContainer: {
+    flexGrow: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1a1a3b', // Dark blue background
     paddingHorizontal: width * 0.05,
+    paddingVertical: height * 0.05,
   },
   title: {
-    fontSize: Math.max(width * 0.08, 26),
+    fontSize: Math.max(width * 0.08, 28),
     fontWeight: 'bold',
     color: '#fff',
-    marginBottom: height * 0.03,
+    marginBottom: height * 0.04,
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 3,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(255, 255, 255, 0.12)',
     borderRadius: width * 0.04,
-    marginBottom: height * 0.01,
+    marginBottom: height * 0.015,
     paddingHorizontal: width * 0.04,
     width: '90%',
     height: height * 0.07,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.1)',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 5,
+    elevation: 3,
+    backdropFilter: 'blur(5px)',
   },
   icon: {
     marginRight: width * 0.03,
@@ -339,29 +382,38 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     color: '#fff',
-    fontSize: Math.max(width * 0.045, 14),
+    fontSize: Math.max(width * 0.045, 16),
+    paddingVertical: 10,
   },
   errorText: {
     color: '#ff6b6b',
     fontSize: Math.max(width * 0.035, 12),
     alignSelf: 'flex-start',
     marginLeft: width * 0.08,
-    marginBottom: height * 0.01,
+    marginBottom: height * 0.015,
     marginTop: -5,
+    fontWeight: '500',
   },
   signupButton: {
     backgroundColor: '#1E90FF',
     borderRadius: width * 0.04,
     paddingVertical: height * 0.02,
     paddingHorizontal: width * 0.3,
-    marginVertical: height * 0.03,
+    marginTop: height * 0.03,
+    marginBottom: height * 0.02,
     alignItems: 'center',
     width: '90%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 4,
   },
   signupButtonText: {
     color: '#fff',
     fontSize: Math.max(width * 0.045, 16),
     fontWeight: 'bold',
+    letterSpacing: 0.5,
   },
   loginText: {
     color: '#fff',
@@ -369,6 +421,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: height * 0.02,
     textDecorationLine: 'underline',
+    fontWeight: '500',
   },
 });
 

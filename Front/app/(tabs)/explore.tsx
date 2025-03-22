@@ -1,15 +1,26 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import "expo-router/entry";
+import AnimatedBackground from '@/components/ui/AnimatedBackground';
 
 const { width, height } = Dimensions.get('window');
+
+// Use drone image as background
+const backgroundImage = require('@/assets/images/drone.png');
 
 export default function ExploreScreen() {
   const router = useRouter();
 
   return (
-    <View style={styles.container}>
+    <AnimatedBackground 
+      backgroundImage={backgroundImage}
+      overlayColors={['rgba(20, 20, 50, 0.5)', 'rgba(30, 30, 80, 0.4)', 'rgba(40, 40, 100, 0.3)']}
+      enableRotation={true}
+      enableVerticalMovement={true}
+      showCirclePatterns={true}
+    >
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         {/* Main Title */}
         <Text style={styles.title}>Explore</Text>
@@ -20,7 +31,9 @@ export default function ExploreScreen() {
           onPress={() => router.push('/map')}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>📍 View Map</Text>
+          <Text style={styles.buttonText}>
+            <Ionicons name="location" size={20} color="#fff" /> View Map
+          </Text>
         </TouchableOpacity>
 
         {/* "Flight History" Button */}
@@ -28,7 +41,9 @@ export default function ExploreScreen() {
           onPress={() => router.push('/history')}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>📊 Flight History</Text>
+          <Text style={styles.buttonText}>
+            <Ionicons name="stats-chart" size={20} color="#fff" /> Flight History
+          </Text>
         </TouchableOpacity>
 
         {/* "Settings" Button */}
@@ -36,25 +51,23 @@ export default function ExploreScreen() {
           onPress={() => router.push('/settings')}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>⚙️ Settings</Text>
+          <Text style={styles.buttonText}>
+            <Ionicons name="settings" size={20} color="#fff" /> Settings
+          </Text>
         </TouchableOpacity>
       </ScrollView>
-    </View>
+    </AnimatedBackground>
   );
 }
 
 // Styles for the Explore screen
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1a1a3b',
-    paddingHorizontal: width * 0.05,
-  },
   content: {
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: height * 0.03,
+    paddingHorizontal: width * 0.05,
   },
   title: {
     fontSize: width * 0.07,
