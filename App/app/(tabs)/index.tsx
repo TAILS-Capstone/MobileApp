@@ -183,7 +183,7 @@ export default function HomeScreen() {
           {notifications.map(notification => (
             <View key={notification.id} style={styles.notificationItem}>
               <View style={styles.notificationIcon}>
-                <Ionicons name="notifications" size={24} color="#ffffff" />
+                <Ionicons name="notifications" size={24} color="#FFD700" />
               </View>
               <View style={styles.notificationContent}>
                 <Text style={styles.notificationTitle}>{notification.title}</Text>
@@ -251,12 +251,12 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   weatherCard: {
-    backgroundColor: 'rgba(42, 42, 91, 0.9)',
+    backgroundColor: '#1E1E1E',
     borderRadius: width * 0.04,
     marginVertical: height * 0.02,
     padding: width * 0.04,
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
+    borderWidth: 0.3,
+    borderColor: 'rgb(255,215,0)',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
@@ -311,15 +311,15 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   actionButton: {
-    backgroundColor: 'rgba(30, 95, 163, 0.9)',
+    backgroundColor: '#212121',
     borderRadius: width * 0.03,
     padding: width * 0.03,
     alignItems: 'center',
     justifyContent: 'center',
     width: '48%',
     marginBottom: height * 0.015,
-    borderWidth: 1,
-    borderColor: '#3a84c9',
+    borderWidth: 0.3,
+    borderColor: 'rgba(255, 217, 0, 0)',
     height: height * 0.1,
   },
   actionText: {
@@ -336,13 +336,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   statCard: {
-    backgroundColor: 'rgba(42, 42, 91, 0.9)',
+    backgroundColor: '#1E1E1E',
     borderRadius: width * 0.03,
     padding: width * 0.03,
     alignItems: 'center',
     width: '32%',
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
+    borderWidth: 0.3,
+    borderColor: 'rgba(255, 217, 0, 0)',
   },
   statNumber: {
     fontSize: width * 0.07,
@@ -359,17 +359,17 @@ const styles = StyleSheet.create({
     marginVertical: height * 0.02,
   },
   notificationItem: {
-    backgroundColor: 'rgba(42, 42, 91, 0.9)',
+    backgroundColor: '#1E1E1E',
     borderRadius: width * 0.03,
     padding: width * 0.04,
     marginBottom: height * 0.015,
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
+    borderWidth: 0.3,
+    borderColor: 'rgba(255, 217, 0, 0)',
   },
   notificationIcon: {
-    backgroundColor: 'rgba(30, 95, 163, 0.9)',
+    backgroundColor: '#2E2E2E',
     borderRadius: 50,
     padding: 10,
     marginRight: width * 0.03,

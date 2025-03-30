@@ -230,9 +230,21 @@ const SignupScreen = () => {
           { text: 'OK', onPress: () => router.push('/loginPage') }
         ]);
       } catch (error: any) {
-        Alert.alert('Error', error.message || 'Failed to create account');
-      } finally {
         setIsLoading(false);
+        
+        // Handle specific Firebase errors
+        const errorMessage = error.message || 'Failed to create account';
+        
+        if (errorMessage.includes('email-already-in-use')) {
+          setEmailError('This email is already registered. Please use a different email or try logging in.');
+        } else if (errorMessage.includes('invalid-email')) {
+          setEmailError('Invalid email format. Please check your email and try again.');
+        } else if (errorMessage.includes('weak-password')) {
+          setPasswordError('Password is too weak. Please choose a stronger password.');
+        } else {
+          // For any other error, show an alert but stay on the signup page
+          Alert.alert('Registration Error', errorMessage);
+        }
       }
     }
   };
