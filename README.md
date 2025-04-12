@@ -1,3 +1,3 @@
-# Tails-frontend
+# Tails-App
 
-Repo for the tails frontend.
+Repo for the tails application.
