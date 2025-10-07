@@ -14,7 +14,7 @@ import {
   UserCredential,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { getAnalytics } from "firebase/analytics";
+import { getAnalytics, isSupported as isAnalyticsSupported } from "firebase/analytics";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
 
@@ -33,10 +33,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Initialize analytics only in web environment
+// Initialize analytics only in supported web environments
 let analytics = null;
-if (Platform.OS === 'web') {
-  analytics = getAnalytics(app);
+if (Platform.OS === 'web' && typeof window !== 'undefined') {
+  isAnalyticsSupported()
+    .then(supported => {
+      if (supported) {
+        analytics = getAnalytics(app);
+      }
+    })
+    .catch(() => {
+      analytics = null;
+    });
 }
 
 // Set persistence to local storage for web and AsyncStorage for native
