@@ -1,25 +1,39 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, View, TextInput, Text, Platform, SafeAreaView, Button, ScrollView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { Dimensions } from 'react-native';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { StyleSheet, View, TextInput, Text, Platform, Button, ScrollView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
-interface MapWebProps {
+import type { MapProps } from './types';
+
+interface MapWebProps extends MapProps {
   apiKey?: string;
 }
 
-const MapWeb: React.FC<MapWebProps> = ({ apiKey }) => {
+const MapWeb: React.FC<MapWebProps> = ({ apiKey, latestLocation, connectedDeviceName }) => {
   const [latitude, setLatitude] = useState('45.4215');
   const [longitude, setLongitude] = useState('-75.6972');
   const [latitudeDelta, setLatitudeDelta] = useState('0.03');
   const [longitudeDelta, setLongitudeDelta] = useState('0.04');
   const [polygonCoordinatesInput, setPolygonCoordinatesInput] = useState('');
   const [pinCoordinatesInput, setPinCoordinatesInput] = useState('');
-  const [markers, setMarkers] = useState<Array<{lat: number, lng: number}>>([]);
-  const [customPolygonCoords, setCustomPolygonCoords] = useState<Array<{lat: number, lng: number}> | null>(null);
-  
+  const [markers, setMarkers] = useState<Array<{ lat: number; lng: number }>>([]);
+  const [customPolygonCoords, setCustomPolygonCoords] = useState<Array<{ lat: number; lng: number }> | null>(null);
+
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<google.maps.Map | null>(null);
   const polygonRef = useRef<google.maps.Polygon | null>(null);
   const markersRef = useRef<Array<google.maps.Marker>>([]);
+  const deviceMarkerRef = useRef<google.maps.Marker | null>(null);
+
+  const deviceLocationSummary = useMemo(() => {
+    if (!connectedDeviceName) {
+      return 'Connect a device to begin streaming coordinates';
+    }
+
+    if (!latestLocation) {
+      return 'Waiting for coordinates';
+    }
+
+    return `${latestLocation.latitude.toFixed(5)}, ${latestLocation.longitude.toFixed(5)}`;
+  }, [connectedDeviceName, latestLocation]);
 
   const handleCoordinateChange = (
     type: 'latitude' | 'longitude' | 'latitudeDelta' | 'longitudeDelta',
@@ -211,8 +225,55 @@ const MapWeb: React.FC<MapWebProps> = ({ apiKey }) => {
       if (script.parentNode) {
         script.parentNode.removeChild(script);
       }
+      if (deviceMarkerRef.current) {
+        deviceMarkerRef.current.setMap(null);
+        deviceMarkerRef.current = null;
+      }
     };
   }, []);
+
+  useEffect(() => {
+    if (!mapInstanceRef.current) {
+      return;
+    }
+
+    if (!latestLocation || typeof window === 'undefined' || !(window as any).google?.maps) {
+      if (deviceMarkerRef.current) {
+        deviceMarkerRef.current.setMap(null);
+        deviceMarkerRef.current = null;
+      }
+      return;
+    }
+
+    const { latitude: lat, longitude: lng } = latestLocation;
+
+    if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+      return;
+    }
+
+    const position = { lat, lng };
+
+    if (!deviceMarkerRef.current) {
+      deviceMarkerRef.current = new google.maps.Marker({
+        position,
+        map: mapInstanceRef.current,
+        title: connectedDeviceName ?? 'BLE Device',
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 8,
+          fillColor: '#22c55e',
+          fillOpacity: 0.9,
+          strokeColor: '#14532d',
+          strokeWeight: 2,
+        },
+      });
+    } else {
+      deviceMarkerRef.current.setPosition(position);
+      deviceMarkerRef.current.setTitle(connectedDeviceName ?? 'BLE Device');
+    }
+
+    mapInstanceRef.current.setCenter(position);
+  }, [latestLocation, connectedDeviceName]);
 
   useEffect(() => {
     if (mapInstanceRef.current && polygonRef.current) {
@@ -243,7 +304,7 @@ const MapWeb: React.FC<MapWebProps> = ({ apiKey }) => {
         <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
           <View style={styles.container}>
             {/* Map View */}
-            <div 
+            <div
               ref={mapRef}
               style={{
                 width: '100%',
@@ -252,7 +313,15 @@ const MapWeb: React.FC<MapWebProps> = ({ apiKey }) => {
                 marginBottom: '15px'
               }}
             />
-            
+
+            <View style={styles.deviceStatusCard}>
+              <Text style={styles.deviceStatusTitle}>Connected Device</Text>
+              <Text style={styles.deviceStatusValue}>
+                {connectedDeviceName ?? 'No device connected'}
+              </Text>
+              <Text style={styles.deviceStatusLocation}>{deviceLocationSummary}</Text>
+            </View>
+
             {/* Polygon Coordinates Input */}
             <View style={styles.inputGroup}>
               <Text style={styles.label}>Polygon Coordinates (lat1,lng1,lat2,lng2,...):</Text>
@@ -406,6 +475,29 @@ const styles = StyleSheet.create({
     color: '#ccc',
     backgroundColor: '#444',
     marginBottom: 10,
+  },
+  deviceStatusCard: {
+    width: '100%',
+    backgroundColor: 'rgba(15, 23, 42, 0.7)',
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 16,
+  },
+  deviceStatusTitle: {
+    color: '#f5f5f5',
+    fontSize: 16,
+    fontWeight: '700',
+    marginBottom: 6,
+  },
+  deviceStatusValue: {
+    color: '#cbd5f5',
+    fontSize: 15,
+    fontWeight: '600',
+    marginBottom: 4,
+  },
+  deviceStatusLocation: {
+    color: '#94a3b8',
+    fontSize: 14,
   },
 });
 

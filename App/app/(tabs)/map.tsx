@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Dimensions } from 'react-native';
 import Map from '../../components/Map/Map';
 import AnimatedBackground from '@/components/ui/AnimatedBackground';
+import BleConnectionPanel from '@/components/Bluetooth/BleConnectionPanel';
+import { useBleContext } from '@/contexts/BleContext';
 
 const { width, height } = Dimensions.get('window');
 
@@ -9,8 +11,12 @@ const { width, height } = Dimensions.get('window');
 const backgroundImage = require('@/assets/images/satellite_view.jpg');
 
 export default function MapScreen() {
+  const { connectedDevice, latestLocation } = useBleContext();
+  const deviceName =
+    connectedDevice?.name || connectedDevice?.localName || connectedDevice?.id || null;
+
   return (
-    <AnimatedBackground 
+    <AnimatedBackground
       backgroundImage={backgroundImage}
       overlayColors={['rgba(10, 10, 30, 0.6)', 'rgba(15, 15, 45, 0.5)', 'rgba(20, 20, 60, 0.4)']}
       enableRotation={true}
@@ -18,8 +24,9 @@ export default function MapScreen() {
       showCirclePatterns={true}
     >
       <View style={styles.container}>
+        <BleConnectionPanel />
         <View style={styles.mapContainer}>
-          <Map />
+          <Map connectedDeviceName={deviceName} latestLocation={latestLocation} />
         </View>
       </View>
     </AnimatedBackground>

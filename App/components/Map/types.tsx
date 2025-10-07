@@ -1,3 +1,6 @@
+import type { BleLocation } from '@/contexts/BleContext';
+
 export interface MapProps {
-    // Add any props you might need later
-  }
+  connectedDeviceName?: string | null;
+  latestLocation?: BleLocation | null;
+}

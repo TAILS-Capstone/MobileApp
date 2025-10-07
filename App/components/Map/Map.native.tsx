@@ -1,16 +1,69 @@
-import React, { useState } from 'react';
-import MapView, { Polygon, Marker } from 'react-native-maps';
-import { StyleSheet, Dimensions, View, TextInput, Text, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Button, ScrollView } from 'react-native';
+import React, { useEffect, useMemo, useState } from 'react';
+import MapView, { Polygon, Marker, LatLng } from 'react-native-maps';
+import {
+  StyleSheet,
+  Dimensions,
+  View,
+  TextInput,
+  Text,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Button,
+  ScrollView,
+  Switch,
+} from 'react-native';
 
-export default function MapNative() {
+import type { MapProps } from './types';
+
+export default function MapNative({ latestLocation, connectedDeviceName }: MapProps) {
   const [latitude, setLatitude] = useState('45.4215'); // Default Ottawa
   const [longitude, setLongitude] = useState('-75.6972'); // Default Ottawa
   const [latitudeDelta, setLatitudeDelta] = useState('0.03');
   const [longitudeDelta, setLongitudeDelta] = useState('0.04');
   const [polygonCoordinatesInput, setPolygonCoordinatesInput] = useState('');
   const [pinCoordinatesInput, setPinCoordinatesInput] = useState('');
-  const [markers, setMarkers] = useState([]); // State to hold added pins
-  const [customPolygonCoords, setCustomPolygonCoords] = useState(null);
+  const [markers, setMarkers] = useState<LatLng[]>([]); // State to hold added pins
+  const [customPolygonCoords, setCustomPolygonCoords] = useState<LatLng[] | null>(null);
+  const [deviceMarker, setDeviceMarker] = useState<LatLng | null>(null);
+  const [followDevice, setFollowDevice] = useState(true);
+
+  useEffect(() => {
+    if (!latestLocation) {
+      setDeviceMarker(null);
+      return;
+    }
+
+    const { latitude: deviceLat, longitude: deviceLng } = latestLocation;
+
+    if (!Number.isFinite(deviceLat) || !Number.isFinite(deviceLng)) {
+      return;
+    }
+
+    const nextMarker: LatLng = {
+      latitude: deviceLat,
+      longitude: deviceLng,
+    };
+
+    setDeviceMarker(nextMarker);
+
+    if (followDevice) {
+      setLatitude(deviceLat.toString());
+      setLongitude(deviceLng.toString());
+    }
+  }, [latestLocation, followDevice]);
+
+  const deviceLocationSummary = useMemo(() => {
+    if (!connectedDeviceName) {
+      return 'Connect a device to begin streaming coordinates';
+    }
+
+    if (!latestLocation) {
+      return 'Waiting for coordinates';
+    }
+
+    return `${latestLocation.latitude.toFixed(5)}, ${latestLocation.longitude.toFixed(5)}`;
+  }, [connectedDeviceName, latestLocation]);
 
   // Calculate the polygon corners based on center and deltas
   const getPolygonCoordinates = () => {
@@ -31,7 +84,7 @@ export default function MapNative() {
 
   // Add a new pin based on the current center coordinates
   const handleAddPin = () => {
-    const newMarker = {
+    const newMarker: LatLng = {
       latitude: parseFloat(latitude),
       longitude: parseFloat(longitude),
     };
@@ -49,7 +102,7 @@ export default function MapNative() {
         return;
       }
       
-      const parsedCoords = [];
+      const parsedCoords: LatLng[] = [];
       for (let i = 0; i < coords.length; i += 2) {
         parsedCoords.push({
           latitude: parseFloat(coords[i]),
@@ -80,7 +133,7 @@ export default function MapNative() {
         return;
       }
       
-      const newMarkers = [];
+      const newMarkers: LatLng[] = [];
       for (let i = 0; i < coords.length; i += 2) {
         newMarkers.push({
           latitude: parseFloat(coords[i]),
@@ -127,11 +180,37 @@ export default function MapNative() {
               strokeColor="rgba(0, 150, 255, 1)"
               strokeWidth={2}
             />
+            {/* Marker showing the connected BLE device location */}
+            {deviceMarker ? (
+              <Marker
+                key="ble-device"
+                coordinate={deviceMarker}
+                pinColor="#22c55e"
+                title={connectedDeviceName ?? 'BLE Device'}
+                description="Latest coordinates from the connected device"
+              />
+            ) : null}
             {/* Render added markers */}
             {markers.map((marker, index) => (
               <Marker key={index} coordinate={marker} />
             ))}
           </MapView>
+
+          <View style={styles.deviceStatusCard}>
+            <View style={styles.deviceStatusHeader}>
+              <Text style={styles.deviceStatusTitle}>Connected Device</Text>
+              {deviceMarker ? (
+                <View style={styles.followRow}>
+                  <Text style={styles.followLabel}>Follow on map</Text>
+                  <Switch value={followDevice} onValueChange={setFollowDevice} />
+                </View>
+              ) : null}
+            </View>
+            <Text style={styles.deviceStatusValue}>
+              {connectedDeviceName ?? 'No device connected'}
+            </Text>
+            <Text style={styles.deviceStatusLocation}>{deviceLocationSummary}</Text>
+          </View>
 
           {/* Polygon Coordinates Input */}
           <View style={styles.inputGroup}>
@@ -249,5 +328,41 @@ const styles = StyleSheet.create({
     color: '#ccc',
     backgroundColor: '#444',
     marginBottom: 10,
+  },
+  deviceStatusCard: {
+    width: Dimensions.get('window').width * 0.95,
+    backgroundColor: 'rgba(15, 23, 42, 0.7)',
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 16,
+  },
+  deviceStatusHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  deviceStatusTitle: {
+    color: '#f5f5f5',
+    fontSize: 16,
+    fontWeight: '700',
+  },
+  deviceStatusValue: {
+    color: '#cbd5f5',
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  deviceStatusLocation: {
+    color: '#94a3b8',
+    marginTop: 4,
+  },
+  followRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  followLabel: {
+    color: '#cbd5f5',
+    fontSize: 14,
   },
 });

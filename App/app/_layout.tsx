@@ -3,6 +3,7 @@ import { Stack, SplashScreen } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AuthProvider } from '@/contexts/AuthContext';
+import { BleProvider } from '@/contexts/BleContext';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import PrivateRoute from '@/components/PrivateRoute';
 import { View } from 'react-native';
@@ -45,21 +46,23 @@ export default function RootLayout() {
 
   return (
     <AuthProvider>
-      <SafeAreaProvider>
-        <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
-        {/* Wrap all routes with the PrivateRoute component that checks for authentication */}
-        <PrivateRoute>
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="(tabs)" />
-            <Stack.Screen name="loginPage" options={{ presentation: 'fullScreenModal' }} />
-            <Stack.Screen name="SignUp" options={{ presentation: 'fullScreenModal' }} />
-            <Stack.Screen name="ForgotPassword" options={{ presentation: 'fullScreenModal' }} />
-            <Stack.Screen name="PhoneAuth" options={{ presentation: 'fullScreenModal' }} />
-            <Stack.Screen name="GoogleAuth" options={{ presentation: 'fullScreenModal' }} />
-            <Stack.Screen name="AnonymousAuth" options={{ presentation: 'fullScreenModal' }} />
-          </Stack>
-        </PrivateRoute>
-      </SafeAreaProvider>
+      <BleProvider>
+        <SafeAreaProvider>
+          <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+          {/* Wrap all routes with the PrivateRoute component that checks for authentication */}
+          <PrivateRoute>
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="(tabs)" />
+              <Stack.Screen name="loginPage" options={{ presentation: 'fullScreenModal' }} />
+              <Stack.Screen name="SignUp" options={{ presentation: 'fullScreenModal' }} />
+              <Stack.Screen name="ForgotPassword" options={{ presentation: 'fullScreenModal' }} />
+              <Stack.Screen name="PhoneAuth" options={{ presentation: 'fullScreenModal' }} />
+              <Stack.Screen name="GoogleAuth" options={{ presentation: 'fullScreenModal' }} />
+              <Stack.Screen name="AnonymousAuth" options={{ presentation: 'fullScreenModal' }} />
+            </Stack>
+          </PrivateRoute>
+        </SafeAreaProvider>
+      </BleProvider>
     </AuthProvider>
   );
 } 
