@@ -7,9 +7,13 @@ import { BleProvider } from '@/contexts/BleContext';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import PrivateRoute from '@/components/PrivateRoute';
 import { View } from 'react-native';
+import { enableScreens } from 'react-native-screens';
 
 // Keep the splash screen visible until we're ready to render
 SplashScreen.preventAutoHideAsync();
+
+// Disable optimized native screens on legacy Android devices to avoid threading crashes
+enableScreens(false);
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -51,7 +55,7 @@ export default function RootLayout() {
           <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
           {/* Wrap all routes with the PrivateRoute component that checks for authentication */}
           <PrivateRoute>
-            <Stack screenOptions={{ headerShown: false }}>
+            <Stack screenOptions={{ headerShown: false, animation: 'none' }}>
               <Stack.Screen name="(tabs)" />
               <Stack.Screen name="loginPage" options={{ presentation: 'fullScreenModal' }} />
               <Stack.Screen name="SignUp" options={{ presentation: 'fullScreenModal' }} />

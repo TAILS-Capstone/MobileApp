@@ -181,7 +181,7 @@ const MapWeb: React.FC<MapWebProps> = ({ apiKey, latestLocation, connectedDevice
 
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey || 'AIzaSyC3mGlwQr09aHqh3_3__fQL1pR4X88-qz8'}&libraries=places`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey || 'AIzaSyCA-ygCG-3pa33rhYk1xzEXgeHXaMbDTMI'}&libraries=places`;
     script.async = true;
     script.defer = true;
     document.head.appendChild(script);
