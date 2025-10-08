@@ -1,19 +1,24 @@
 {
   "expo": {
-    "name": "myTails_Front",
-    "slug": "myTails_Front",
+  "name": "TAILS",
+  "slug": "tails",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+  "scheme": "tails",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "package": "com.yourcompany.yourappname",
+  "package": "com.tails.mobileapp",
       "versionCode": 1,
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCA-ygCG-3pa33rhYk1xzEXgeHXaMbDTMI"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
