@@ -102,6 +102,21 @@ export default function TabLayout() {
         }}
       />
 
+      {/* Onglet Bluetooth */}
+       <Tabs.Screen
+        name="BluetoothScreen"
+        options={{
+          title: 'Bluetooth',
+          tabBarIcon: ({ focused }) => (
+            <Ionicons
+              name="bluetooth"
+              size={28}
+              color={focused ? '#ffffff' : 'rgba(255, 255, 255, 0.6)'}
+            />
+          ),
+        }}
+      />
+
       {/* Onglet Dashboard */}
       <Tabs.Screen
         name="dashboard"

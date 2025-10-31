@@ -28,7 +28,8 @@ interface UseBleState {
 }
 
 const useStableBleManager = () => {
-  const managerRef = useRef<BleManager>();
+  //const managerRef = useRef<BleManager>();
+  const managerRef = useRef<BleManager | null>(null);
 
   if (!managerRef.current) {
     managerRef.current = new BleManager();
