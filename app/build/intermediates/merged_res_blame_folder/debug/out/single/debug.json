@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-merged_res-31:\\drawable_button_disconnect.xml.flat",
+        "source": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-main-33:\\drawable\\button_disconnect.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-31:/drawable_button_connect.xml.flat",
+        "source": "com.drone.ble.app-main-33:/drawable/button_connect.xml"
+    },
+    {
+        "merged": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-merged_res-31:\\drawable_button_connect.xml.flat",
+        "source": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-main-33:\\drawable\\button_connect.xml"
+    },
+    {
+        "merged": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-merged_res-31:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-main-33:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-31:/layout_activity_main.xml.flat",
+        "source": "com.drone.ble.app-main-33:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-merged_res-31:\\drawable_grid_pattern.xml.flat",
+        "source": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-main-33:\\drawable\\grid_pattern.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-31:/drawable_status_circle.xml.flat",
+        "source": "com.drone.ble.app-main-33:/drawable/status_circle.xml"
+    },
+    {
+        "merged": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-merged_res-31:\\drawable_status_circle.xml.flat",
+        "source": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-main-33:\\drawable\\status_circle.xml"
+    },
+    {
+        "merged": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-merged_res-31:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-main-33:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-merged_res-31:\\drawable_status_circle_connected.xml.flat",
+        "source": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-main-33:\\drawable\\status_circle_connected.xml"
+    },
+    {
+        "merged": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-merged_res-31:\\drawable_grid_tile.xml.flat",
+        "source": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-main-33:\\drawable\\grid_tile.xml"
+    },
+    {
+        "merged": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-merged_res-31:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-main-33:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-merged_res-31:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\leagu\\.gradle\\daemon\\8.2\\com.drone.ble.app-main-33:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-31:/drawable_status_circle_connected.xml.flat",
+        "source": "com.drone.ble.app-main-33:/drawable/status_circle_connected.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-31:/drawable_button_disconnect.xml.flat",
+        "source": "com.drone.ble.app-main-33:/drawable/button_disconnect.xml"
+    }
+]

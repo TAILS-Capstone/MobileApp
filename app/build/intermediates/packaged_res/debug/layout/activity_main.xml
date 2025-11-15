@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:padding="32dp"
+    tools:context=".MainActivity">
+
+    <!-- Drone-inspired grid pattern background -->
+    <!--    <View
+        android:id="@+id/gridOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/grid_pattern"
+        android:alpha="0.1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /> -->
+
+    <!-- Status Indicator Circle -->
+    <View
+        android:id="@+id/statusIndicator"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@drawable/status_circle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/statusText"
+        android:layout_marginTop="80dp" />
+
+    <!-- Loading Animation (Rotating Ring) -->
+    <ProgressBar
+        android:id="@+id/loadingRing"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:indeterminateTint="@android:color/white"
+        android:indeterminateTintMode="src_atop"
+        style="?android:attr/progressBarStyleLarge"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/statusIndicator"
+        app:layout_constraintBottom_toBottomOf="@id/statusIndicator"
+        app:layout_constraintStart_toStartOf="@id/statusIndicator"
+        app:layout_constraintEnd_toEndOf="@id/statusIndicator" />
+
+    <!-- Status Text -->
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/disconnected"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.1"
+        android:fontFamily="monospace"
+        app:layout_constraintTop_toBottomOf="@id/statusIndicator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <!-- Connection Button -->
+    <Button
+        android:id="@+id/connectButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:text="@string/connect"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.08"
+        android:fontFamily="monospace"
+        android:enabled="true"
+        android:clickable="true"
+        android:background="@drawable/button_connect"
+        android:elevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusText"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="40dp" />
+
+    <!-- Techy corner brackets -->
+    <TextView
+        android:id="@+id/cornerTopLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="┌"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:fontFamily="monospace"
+        android:alpha="0.3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/cornerTopRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="┐"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:fontFamily="monospace"
+        android:alpha="0.3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <TextView
+        android:id="@+id/cornerBottomLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="└"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:fontFamily="monospace"
+        android:alpha="0.3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/cornerBottomRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="┘"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:fontFamily="monospace"
+        android:alpha="0.3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

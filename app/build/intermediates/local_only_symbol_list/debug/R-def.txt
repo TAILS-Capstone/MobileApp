@@ -1,0 +1,28 @@
+R_DEF: Internal format may change without notice
+local
+drawable button_connect
+drawable button_disconnect
+drawable grid_pattern
+drawable grid_tile
+drawable ic_launcher_foreground
+drawable status_circle
+drawable status_circle_connected
+id connectButton
+id cornerBottomLeft
+id cornerBottomRight
+id cornerTopLeft
+id cornerTopRight
+id loadingRing
+id statusIndicator
+id statusText
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string connect
+string connected
+string disconnect
+string disconnected
+string scanning
+string status
+style Theme.DroneBLE

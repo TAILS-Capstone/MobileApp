@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Drone BLE</string>
+    <string name="connect">CONNECT</string>
+    <string name="disconnect">DISCONNECT</string>
+    <string name="scanning">SCANNING...</string>
+    <string name="connected">CONNECTED</string>
+    <string name="disconnected">DISCONNECTED</string>
+    <string name="status">STATUS</string>
+</resources>
+
