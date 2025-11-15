@@ -23,7 +23,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DroneBLE"
         android:usesCleartextTraffic="true">
-        
+
+        <!-- Google Maps API key -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCq0lMmSmvVKLoWEOXeCfd8LNwbEFkmAGA" />
+
+        <activity
+            android:name=".MapActivity"
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

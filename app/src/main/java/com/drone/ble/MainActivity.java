@@ -10,6 +10,7 @@ import android.bluetooth.le.ScanFilter;
 import android.bluetooth.le.ScanResult;
 import android.bluetooth.le.ScanSettings;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         statusText = findViewById(R.id.statusText);
         loadingRing = findViewById(R.id.loadingRing);
         statusIndicator = findViewById(R.id.statusIndicator);
+        View actionMap = findViewById(R.id.actionMap);
 
         connectButton.setOnClickListener(v -> {
             Toast.makeText(this, "Button tapped!", Toast.LENGTH_SHORT).show();
@@ -120,6 +122,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        if (actionMap != null) {
+            actionMap.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, MapActivity.class);
+                startActivity(intent);
+            });
+        }
     }
 
     private void initializeBluetooth() {
