@@ -1,14 +1,18 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:2:1-38:12
-INJECTED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:2:1-38:12
-INJECTED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:2:1-38:12
-INJECTED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:2:1-38:12
+ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:2:1-56:12
+INJECTED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:2:1-56:12
+INJECTED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:2:1-56:12
+INJECTED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:2:1-56:12
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\leagu\.gradle\caches\transforms-3\74a2558674f6dcad48a387d806131537\transformed\material-1.11.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\leagu\.gradle\caches\transforms-3\4bcbdb61f70c63be020394c3ae9403e9\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\leagu\.gradle\caches\transforms-3\eb005582472c4060f015437e9d5a5229\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\leagu\.gradle\caches\transforms-3\3c3e8d87979f80077854f6234c4ddaef\transformed\appcompat-1.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:17:1-44:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\leagu\.gradle\caches\transforms-3\2538b0697fd395b5a79f94232212082e\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\70405edf6d9e463f8629958f01ad0b6e\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\4f24c2a45e6e56ae6167b0432d2cf4f7\transformed\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\leagu\.gradle\caches\transforms-3\60c5d0f162339dc01430b3ba99ea2dca\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:16:1-26:12
 MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\leagu\.gradle\caches\transforms-3\0baea330af915d89892842272d50dcc9\transformed\fragment-1.3.6\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.8.0] C:\Users\leagu\.gradle\caches\transforms-3\9be8c70457edf57b5bb026f44e1f8a13\transformed\jetified-activity-1.8.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c9c5803c6659db38f935f7b0dd4e23e\transformed\jetified-emoji2-views-helper-1.2.0\AndroidManifest.xml:2:1-7:12
@@ -89,13 +93,27 @@ ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest
 		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:16:64-87
 	android:name
 		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:16:19-63
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:17:5-67
+MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:17:22-64
 application
-ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:18:5-36:19
-INJECTED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:18:5-36:19
+ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:19:5-54:19
+INJECTED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:19:5-54:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\leagu\.gradle\caches\transforms-3\74a2558674f6dcad48a387d806131537\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\leagu\.gradle\caches\transforms-3\74a2558674f6dcad48a387d806131537\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\leagu\.gradle\caches\transforms-3\4bcbdb61f70c63be020394c3ae9403e9\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\leagu\.gradle\caches\transforms-3\4bcbdb61f70c63be020394c3ae9403e9\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:36:5-42:19
+MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:36:5-42:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\70405edf6d9e463f8629958f01ad0b6e\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\70405edf6d9e463f8629958f01ad0b6e\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\4f24c2a45e6e56ae6167b0432d2cf4f7\transformed\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\4f24c2a45e6e56ae6167b0432d2cf4f7\transformed\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\leagu\.gradle\caches\transforms-3\60c5d0f162339dc01430b3ba99ea2dca\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\leagu\.gradle\caches\transforms-3\60c5d0f162339dc01430b3ba99ea2dca\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:20:5-24:19
 MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\leagu\.gradle\caches\transforms-3\4ef2d37eca9ad04b2c397a091ea18fe4\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\leagu\.gradle\caches\transforms-3\4ef2d37eca9ad04b2c397a091ea18fe4\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\leagu\.gradle\caches\transforms-3\f41bcf8a8e0d9819e753268d38a40d88\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:23:5-33:19
@@ -113,37 +131,61 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\leagu\.gradle\cach
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.9.0] C:\Users\leagu\.gradle\caches\transforms-3\f0f4ee7c3b88100b2d2cd4b05ab423cd\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:23:9-35
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:24:9-35
 	android:label
-		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:21:9-41
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:22:9-41
 	android:roundIcon
-		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:22:9-54
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:23:9-42
 	android:icon
-		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:20:9-43
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:21:9-37
 	android:allowBackup
-		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:19:9-35
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:20:9-35
 	android:theme
-		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:24:9-46
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:25:9-46
 	android:usesCleartextTraffic
-		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:25:9-44
-activity#com.drone.ble.MainActivity
-ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:27:9-35:20
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:26:9-44
+meta-data#com.google.android.geo.API_KEY
+ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:29:9-31:71
+	android:value
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:31:13-68
+	android:name
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:30:13-58
+activity#com.drone.ble.MapActivity
+ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:33:9-35:40
 	android:exported
-		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:29:13-36
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:34:13-40
+activity#com.drone.ble.MainActivity
+ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:37:9-45:20
+	android:exported
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:39:13-36
 	android:theme
-		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:30:13-50
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:40:13-50
 	android:name
-		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:28:13-41
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:38:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:31:13-34:29
+ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:41:13-44:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:32:17-69
+ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:42:17-69
 	android:name
-		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:32:25-66
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:42:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:33:17-77
+ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:43:17-77
 	android:name
-		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:33:27-74
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:43:27-74
+activity#com.drone.ble.ConnectActivity
+ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:47:9-49:40
+	android:exported
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:49:13-37
+	android:name
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:48:13-44
+activity#com.drone.ble.HistoryActivity
+ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:51:9-53:40
+	android:exported
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:53:13-37
+	android:name
+		ADDED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml:52:13-44
 uses-sdk
 INJECTED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml
@@ -156,8 +198,16 @@ MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\leagu\.gradl
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\leagu\.gradle\caches\transforms-3\eb005582472c4060f015437e9d5a5229\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\leagu\.gradle\caches\transforms-3\3c3e8d87979f80077854f6234c4ddaef\transformed\appcompat-1.6.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\leagu\.gradle\caches\transforms-3\3c3e8d87979f80077854f6234c4ddaef\transformed\appcompat-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\leagu\.gradle\caches\transforms-3\2538b0697fd395b5a79f94232212082e\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\leagu\.gradle\caches\transforms-3\2538b0697fd395b5a79f94232212082e\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\70405edf6d9e463f8629958f01ad0b6e\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\70405edf6d9e463f8629958f01ad0b6e\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\4f24c2a45e6e56ae6167b0432d2cf4f7\transformed\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\4f24c2a45e6e56ae6167b0432d2cf4f7\transformed\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\leagu\.gradle\caches\transforms-3\60c5d0f162339dc01430b3ba99ea2dca\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\leagu\.gradle\caches\transforms-3\60c5d0f162339dc01430b3ba99ea2dca\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:18:5-43
 MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\leagu\.gradle\caches\transforms-3\0baea330af915d89892842272d50dcc9\transformed\fragment-1.3.6\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\leagu\.gradle\caches\transforms-3\0baea330af915d89892842272d50dcc9\transformed\fragment-1.3.6\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.8.0] C:\Users\leagu\.gradle\caches\transforms-3\9be8c70457edf57b5bb026f44e1f8a13\transformed\jetified-activity-1.8.0\AndroidManifest.xml:20:5-44
@@ -234,6 +284,42 @@ MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\leagu\.
 		INJECTED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from C:\Users\leagu\OneDrive\Desktop\BLE_test\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:23:22-76
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:28:9-32
+queries
+ADDED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:30:5-34:15
+package#com.google.android.apps.maps
+ADDED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:33:9-64
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:33:18-61
+uses-library#org.apache.http.legacy
+ADDED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:39:9-41:40
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:41:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\leagu\.gradle\caches\transforms-3\2c0cf343e737187b677a754a81b4a86c\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:40:13-50
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\70405edf6d9e463f8629958f01ad0b6e\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\70405edf6d9e463f8629958f01ad0b6e\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\70405edf6d9e463f8629958f01ad0b6e\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\leagu\.gradle\caches\transforms-3\70405edf6d9e463f8629958f01ad0b6e\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\leagu\.gradle\caches\transforms-3\60c5d0f162339dc01430b3ba99ea2dca\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\leagu\.gradle\caches\transforms-3\60c5d0f162339dc01430b3ba99ea2dca\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\leagu\.gradle\caches\transforms-3\60c5d0f162339dc01430b3ba99ea2dca\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
 provider#androidx.startup.InitializationProvider
 ADDED from [androidx.emoji2:emoji2:1.2.0] C:\Users\leagu\.gradle\caches\transforms-3\4ef2d37eca9ad04b2c397a091ea18fe4\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
 MERGED from [androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\leagu\.gradle\caches\transforms-3\f41bcf8a8e0d9819e753268d38a40d88\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:24:9-32:20

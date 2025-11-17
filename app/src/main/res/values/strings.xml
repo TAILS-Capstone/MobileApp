@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Drone BLE</string>
+    <string name="app_name">TAILS</string>
     <string name="connect">CONNECT</string>
     <string name="disconnect">DISCONNECT</string>
     <string name="scanning">SCANNING...</string>

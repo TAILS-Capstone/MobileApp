@@ -8,7 +8,7 @@
     android:background="@android:color/black"
     tools:context=".MainActivity">
 
-    <!-- Satellite image background (copy satellite_view.jpg into res/drawable) -->
+    <!-- Satellite image background (copy satellite_view.webp into res/drawable) -->
     <ImageView
         android:id="@+id/homeBackgroundImage"
         android:layout_width="0dp"
@@ -37,7 +37,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomTabs"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -65,9 +65,10 @@
                         android:id="@+id/homeGreeting"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Good Pilot"
+                        android:text="Mouad Ben lahbib"
                         android:textColor="#D1D1D1"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/homeTitle"
@@ -87,88 +88,6 @@
                         android:textSize="12sp"
                         android:layout_marginTop="4dp" />
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <!-- Connection / BLE Card -->
-            <LinearLayout
-                android:id="@+id/connectionCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:background="@drawable/card_flight_conditions"
-                android:layout_marginBottom="16dp"
-                android:elevation="4dp"
-                android:clipToPadding="false"
-                android:clipToOutline="false">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Drone Link"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp" />
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp">
-
-                    <!-- Status Indicator Circle -->
-                    <View
-                        android:id="@+id/statusIndicator"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:background="@drawable/status_circle" />
-
-                    <!-- Loading Animation (Rotating Ring) -->
-                    <ProgressBar
-                        android:id="@+id/loadingRing"
-                        style="?android:attr/progressBarStyleLarge"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:indeterminateTint="@android:color/white"
-                        android:indeterminateTintMode="src_atop"
-                        android:visibility="gone"
-                        android:layout_gravity="center" />
-                </FrameLayout>
-
-                <!-- Status Text -->
-                <TextView
-                    android:id="@+id/statusText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/disconnected"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.1"
-                    android:fontFamily="monospace"
-                    android:layout_marginTop="8dp" />
-
-                <!-- Connection Button -->
-                <Button
-                    android:id="@+id/connectButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/connect"
-                    android:textColor="@android:color/white"
-                    android:textAllCaps="false"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.08"
-                    android:fontFamily="monospace"
-                    android:enabled="true"
-                    android:clickable="true"
-                    android:background="@drawable/button_connect"
-                    android:elevation="4dp" />
 
             </LinearLayout>
 
@@ -206,6 +125,7 @@
                         android:gravity="center_horizontal">
 
                         <TextView
+                            android:id="@+id/weatherTempValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="23°C"
@@ -229,6 +149,7 @@
                         android:gravity="center_horizontal">
 
                         <TextView
+                            android:id="@+id/weatherConditionValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Clear"
@@ -252,6 +173,7 @@
                         android:gravity="center_horizontal">
 
                         <TextView
+                            android:id="@+id/weatherWindValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="6 km/h"
@@ -356,7 +278,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="12"
+                        android:text="1"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -383,7 +305,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3"
+                        android:text="1"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -422,112 +344,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Notifications -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Notifications"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="24dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_generic"
-                    android:padding="12dp"
-                    android:layout_marginBottom="8dp">
-
-                    <View
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:background="#2E2E2E"
-                        android:layout_marginEnd="12dp" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Flight Check Reminder"
-                            android:textColor="@android:color/white"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Pre-flight check for tomorrow"
-                            android:textColor="#D1D1D1"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2h ago"
-                            android:textColor="#999999"
-                            android:textSize="11sp"
-                            android:layout_marginTop="4dp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/card_generic"
-                    android:padding="12dp">
-
-                    <View
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:background="#2E2E2E"
-                        android:layout_marginEnd="12dp" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Weather Alert"
-                            android:textColor="@android:color/white"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Strong winds expected"
-                            android:textColor="#D1D1D1"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="6h ago"
-                            android:textColor="#999999"
-                            android:textSize="11sp"
-                            android:layout_marginTop="4dp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 
@@ -535,7 +351,7 @@
     <LinearLayout
         android:id="@+id/bottomTabs"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="56dp"
         android:orientation="horizontal"
         android:gravity="center"
         android:background="#151530"
@@ -549,10 +365,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="H"
-            android:textColor="@android:color/white"
+            android:text="Home"
+            android:textColor="#FFD700"
             android:textStyle="bold"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tabMap"
@@ -560,68 +376,31 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="M"
-            android:textColor="#888888"
-            android:textSize="16sp" />
+            android:text="Map"
+            android:textColor="#D1D1D1"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tabConnect"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Connect"
+            android:textColor="#D1D1D1"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tabHistory"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="History"
+            android:textColor="#D1D1D1"
+            android:textSize="14sp" />
 
     </LinearLayout>
-
-    <!-- Techy corner brackets -->
-    <TextView
-        android:id="@+id/cornerTopLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="┌"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:fontFamily="monospace"
-        android:alpha="0.3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp" />
-
-    <TextView
-        android:id="@+id/cornerTopRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="┐"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:fontFamily="monospace"
-        android:alpha="0.3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp" />
-
-    <TextView
-        android:id="@+id/cornerBottomLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="└"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:fontFamily="monospace"
-        android:alpha="0.3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp" />
-
-    <TextView
-        android:id="@+id/cornerBottomRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="┘"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:fontFamily="monospace"
-        android:alpha="0.3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
