@@ -7,5 +7,16 @@
     <string name="connected">CONNECTED</string>
     <string name="disconnected">DISCONNECTED</string>
     <string name="status">STATUS</string>
+    <string name="last_data_placeholder">Last data: --</string>
+    <string name="last_data_waiting">Awaiting data...</string>
+    <string name="logs_placeholder">Logs will appear here.</string>
+    <string name="parsed_data_placeholder">Parsed data: --</string>
+    <string name="parsed_data_waiting">Parsed data: awaiting structured payload...</string>
+    <string name="parsed_data_invalid">Parsed data: unable to parse payload.</string>
+    <string name="parsed_data_format">Parsed detection:
+Type: %1$s
+ID: %2$d
+Lat: %3$s
+Lon: %4$s</string>
 </resources>
 

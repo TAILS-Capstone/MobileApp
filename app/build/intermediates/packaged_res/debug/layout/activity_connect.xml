@@ -111,6 +111,16 @@
                 android:fontFamily="monospace"
                 android:background="@drawable/button_connect_light"
                 android:stateListAnimator="@null" />
+
+            <TextView
+                android:id="@+id/dataText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/last_data_placeholder"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:fontFamily="monospace" />
         </LinearLayout>
     </LinearLayout>
 

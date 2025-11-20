@@ -21,6 +21,7 @@ id connectBackgroundImage
 id connectBackgroundOverlay
 id connectButton
 id connectContent
+id dataText
 id historyBackgroundImage
 id historyBackgroundOverlay
 id historyBottomTabs
@@ -59,6 +60,8 @@ string connect
 string connected
 string disconnect
 string disconnected
+string last_data_placeholder
+string last_data_waiting
 string scanning
 string status
 style Theme.DroneBLE

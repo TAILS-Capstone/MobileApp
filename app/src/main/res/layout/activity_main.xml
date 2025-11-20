@@ -359,46 +359,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
+        <ImageView
             android:id="@+id/tabHome"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="Home"
-            android:textColor="#FFD700"
-            android:textStyle="bold"
-            android:textSize="14sp" />
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_tab_home"
+            android:tint="#FFD700"
+            android:contentDescription="Home" />
 
-        <TextView
+        <ImageView
             android:id="@+id/tabMap"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="Map"
-            android:textColor="#D1D1D1"
-            android:textSize="14sp" />
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_tab_map"
+            android:tint="#D1D1D1"
+            android:contentDescription="Map" />
 
-        <TextView
+        <ImageView
             android:id="@+id/tabConnect"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="Connect"
-            android:textColor="#D1D1D1"
-            android:textSize="14sp" />
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_tab_connect"
+            android:tint="#D1D1D1"
+            android:contentDescription="Connect" />
 
-        <TextView
+        <ImageView
             android:id="@+id/tabHistory"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="History"
-            android:textColor="#D1D1D1"
-            android:textSize="14sp" />
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_tab_history"
+            android:tint="#D1D1D1"
+            android:contentDescription="History" />
 
     </LinearLayout>
 

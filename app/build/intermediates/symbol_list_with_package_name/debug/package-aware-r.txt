@@ -3289,6 +3289,7 @@ id custom
 id customPanel
 id cut
 id dark
+id dataText
 id date_picker_actions
 id decelerate
 id decelerateAndComplete
@@ -3948,6 +3949,8 @@ string fab_transformation_sheet_behavior
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_view_role_description
+string last_data_placeholder
+string last_data_waiting
 string m3_exceed_max_badge_text_suffix
 string m3_ref_typeface_brand_medium
 string m3_ref_typeface_brand_regular
