@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.DroneBLE" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color (electric blue on black) -->
+        <item name="colorPrimary">#0A84FF</item>
+        <item name="colorPrimaryDark">#0057D9</item>
+        <item name="colorSecondary">#0A84FF</item>
+        <item name="colorAccent">#0A84FF</item>
+
+        <!-- Background / text -->
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+
+        <!-- Status bar / navigation bar -->
+        <item name="android:statusBarColor">@android:color/black</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+    </style>
+</resources>
+

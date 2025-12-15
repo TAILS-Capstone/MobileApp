@@ -1,0 +1,94 @@
+[
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_card_generic.xml.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/card_generic.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_grid_pattern.xml.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/grid_pattern.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/raw_map_style_night.json.flat",
+        "source": "com.drone.ble.app-main-36:/raw/map_style_night.json"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/layout_activity_map.xml.flat",
+        "source": "com.drone.ble.app-main-36:/layout/activity_map.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/mipmap-anydpi-v26_tails.xml.flat",
+        "source": "com.drone.ble.app-main-36:/mipmap-anydpi-v26/tails.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_button_connect.xml.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/button_connect.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_satellite_view.webp.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/satellite_view.webp"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_button_connect_light.xml.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/button_connect_light.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/layout_activity_connect.xml.flat",
+        "source": "com.drone.ble.app-main-36:/layout/activity_connect.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_home_background_overlay.xml.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/home_background_overlay.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_card_flight_conditions.xml.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/card_flight_conditions.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.drone.ble.app-main-36:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_quick_action_tile.xml.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/quick_action_tile.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/mipmap-anydpi_tails.xml.flat",
+        "source": "com.drone.ble.app-main-36:/mipmap-anydpi/tails.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_button_disconnect.xml.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/button_disconnect.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_grid_tile.xml.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/grid_tile.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_status_circle_connected.xml.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/status_circle_connected.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/layout_activity_history.xml.flat",
+        "source": "com.drone.ble.app-main-36:/layout/activity_history.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_tails.webp.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/tails.webp"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/drawable_status_circle.xml.flat",
+        "source": "com.drone.ble.app-main-36:/drawable/status_circle.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/layout_activity_main.xml.flat",
+        "source": "com.drone.ble.app-main-36:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.drone.ble.app-merged_res-34:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.drone.ble.app-main-36:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    }
+]
