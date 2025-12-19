@@ -1,48 +1,102 @@
-# TAILS MobileApp
+# TAILS Mobile App
 
-This repository is a **monorepo-style container** for the TAILS mobile application work.
+Mobile applications for the **TAILS** capstone project.
 
-> The **repo root currently contains only subfolders** (there is **no root-level Gradle or Node project** to build/run from the top). Please follow the instructions in each subproject’s README.
+This repository contains **two separate mobile projects**:
+- **`MobileApp-ExpoGo-UI/`** : Expo / React Native UI app
+- **`MobileApp-AndroidStudio-BLE/`** : Native Android BLE app (plus ESP32 test server sample)
 
-## Screenshots / UI Preview
+---
 
-### Auth & Home
+## Repository Structure
 
-<p>
-  <img src="docs/images/login.png.png" alt="Login" width="280" />
-  <img src="docs/images/create-account.png.png" alt="Create Account" width="280" />
-  <img src="docs/images/home-ios.png.png" alt="Home (iOS)" width="280" />
-  <img src="docs/images/home-android-device.jpg.png" alt="Home (Android)" width="280" />
-</p>
+```text
+MobileApp/
+├── MobileApp-ExpoGo-UI/            # Expo (React Native) UI app
+├── MobileApp-AndroidStudio-BLE/    # Android Studio BLE app
+└── docs/
+    └── images/                     # Screenshots used in this README
+```
 
-### Map / POI Pinning
+---
 
-<p>
-  <img src="docs/images/Map_POI.jpg" alt="Map / POI Pinning" width="640" />
-</p>
+## Tech Stack
 
-## Subprojects
+### `MobileApp-ExpoGo-UI` (Expo UI)
+- Expo / React Native
+- `expo-linear-gradient`
 
-This repo contains multiple subprojects. For setup, build, run, and environment details, see their READMEs:
+### `MobileApp-AndroidStudio-BLE` (Android BLE)
+- Native Android
+- Bluetooth Low Energy (BLE)
+- Google Maps SDK
 
-- **Mobile App** (client)
-  - 📄 **README:** see the subproject README in the corresponding folder (linked below).
-- **Backend / Services** (if applicable)
-  - 📄 **README:** see the subproject README in the corresponding folder (linked below).
+---
 
-### Subproject README links
+## Screenshots
 
-- Mobile app subproject README: `./mobile/README.md` *(update this link if your folder name differs)*
-- Backend/services subproject README: `./backend/README.md` *(update this link if your folder name differs)*
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <strong>Login</strong><br/>
+      <img src="docs/images/login.png" alt="Login screen" width="320"/>
+    </td>
+    <td width="50%" align="center">
+      <strong>Create Account</strong><br/>
+      <img src="docs/images/create-account.png" alt="Create account screen" width="320"/>
+    </td>
+  </tr>
 
-> If those paths don’t match your current folder names, please open an issue/PR or update this README with the correct subproject folder paths.
+  <tr>
+    <td width="50%" align="center">
+      <strong>Home (iOS)</strong><br/>
+      <img src="docs/images/home-ios.png" alt="Home screen on iOS" width="320"/>
+    </td>
+    <td width="50%" align="center">
+      <strong>Home (Android)</strong><br/>
+      <img src="docs/images/home-android-device.jpg" alt="Home screen on Android device" width="320"/>
+    </td>
+  </tr>
 
-## Repository layout (high level)
+  <tr>
+    <td width="50%" align="center">
+      <strong>History</strong><br/>
+      <img src="docs/images/history.png" alt="History screen" width="320"/>
+    </td>
+    <td width="50%" align="center">
+      <strong>Settings</strong><br/>
+      <img src="docs/images/settings.png" alt="Settings screen" width="320"/>
+    </td>
+  </tr>
+</table>
 
-- `docs/images/` — committed screenshots referenced above
-- Other folders at the repo root — individual subprojects (each should include its own README)
+<br/>
 
-## Contributing
+<div align="center">
+  <strong>Map / POI</strong><br/>
+  <img src="docs/images/Map_POI.jpg" alt="Map / POI screen" width="900"/>
+</div>
 
-- Make changes within the relevant subproject folder.
-- Keep subproject documentation in the subproject README, and link to it from this root README.
+---
+
+## Getting Started
+
+### Expo UI App (`MobileApp-ExpoGo-UI/`)
+
+```bash
+cd MobileApp-ExpoGo-UI
+npm install
+npx expo start
+```
+
+### Android BLE App (`MobileApp-AndroidStudio-BLE/`)
+
+1. Open `MobileApp-AndroidStudio-BLE/` in Android Studio
+2. Sync Gradle
+3. Build & run on an Android device
+
+---
+
+## License
+
+MIT License. See `LICENSE`.
